@@ -985,3 +985,25 @@ tbody tr:last-child td {
   }
 
 }
+
+/* =========================================================
+   TOMBOL HAPUS
+   ========================================================= */
+
+button.danger {
+  background: #fee2e2;
+  color: #b91c1c;
+
+  border: 1px solid #fecaca;
+
+  box-shadow: none;
+}
+
+button.danger:hover {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+button.danger:active {
+  background: #fca5a5;
+}
