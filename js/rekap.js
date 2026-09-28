@@ -99,6 +99,16 @@ function renderRekap() {
         state.pengeluaran.length
       : 0;
 
+   /* =========================
+   RASIO PENGELUARAN
+========================== */
+
+const rasioPengeluaran =
+  totalPemasukan > 0
+    ? (totalPengeluaran /
+        totalPemasukan) * 100
+    : 0;
+
 
   const kategoriTotal = {};
 
@@ -175,6 +185,18 @@ function renderRekap() {
       rp(rataPengeluaran);
   }
 
+   const elRasioPengeluaran =
+  document.getElementById(
+    "rekapRasioPengeluaran"
+  );
+
+if (elRasioPengeluaran) {
+
+  elRasioPengeluaran.textContent =
+    rasioPengeluaran
+      .toFixed(1) + "%";
+
+}
 
   if (elKategoriTerbesar) {
 
@@ -185,7 +207,181 @@ function renderRekap() {
 
   }
 
+/* =========================
+   RINGKASAN BULANAN
+========================== */
 
+const semuaTransaksi = [
+
+  ...state.kas.map(item => ({
+    tanggal: item.tanggal
+  })),
+
+  ...state.pengeluaran.map(item => ({
+    tanggal: item.tanggal
+  }))
+
+].sort(
+  (a, b) =>
+    b.tanggal.localeCompare(
+      a.tanggal
+    )
+);
+
+
+const bulanAktif =
+  semuaTransaksi.length
+    ? String(
+        semuaTransaksi[0].tanggal
+      ).slice(0, 7)
+    : "";
+
+
+let bulanPemasukan = 0;
+let bulanPengeluaran = 0;
+
+let bulanTransaksi = 0;
+
+
+/* Pemasukan bulan aktif */
+
+state.kas.forEach(item => {
+
+  if (
+    String(item.tanggal)
+      .slice(0, 7) === bulanAktif
+  ) {
+
+    bulanPemasukan +=
+      Number(item.total || 0);
+
+    bulanTransaksi++;
+
+  }
+
+});
+
+
+/* Pengeluaran bulan aktif */
+
+state.pengeluaran.forEach(item => {
+
+  if (
+    String(item.tanggal)
+      .slice(0, 7) === bulanAktif
+  ) {
+
+    bulanPengeluaran +=
+      Number(item.jumlah || 0);
+
+    bulanTransaksi++;
+
+  }
+
+});
+
+
+const bulanSaldo =
+  bulanPemasukan -
+  bulanPengeluaran;
+
+
+/* Format nama bulan */
+
+const namaBulan = [
+
+  "Januari",
+  "Februari",
+  "Maret",
+  "April",
+  "Mei",
+  "Juni",
+  "Juli",
+  "Agustus",
+  "September",
+  "Oktober",
+  "November",
+  "Desember"
+
+];
+
+
+let namaBulanAktif = "-";
+
+
+if (bulanAktif) {
+
+  const bagian =
+    bulanAktif.split("-");
+
+  const tahun =
+    bagian[0];
+
+  const nomorBulan =
+    Number(bagian[1]);
+
+  namaBulanAktif =
+    `${namaBulan[nomorBulan - 1]} ${tahun}`;
+
+}
+
+
+/* Masukkan ke HTML */
+
+const elBulan =
+  document.getElementById(
+    "rekapBulan"
+  );
+
+const elBulanPemasukan =
+  document.getElementById(
+    "rekapBulanPemasukan"
+  );
+
+const elBulanPengeluaran =
+  document.getElementById(
+    "rekapBulanPengeluaran"
+  );
+
+const elBulanSaldo =
+  document.getElementById(
+    "rekapBulanSaldo"
+  );
+
+const elBulanTransaksi =
+  document.getElementById(
+    "rekapBulanTransaksi"
+  );
+
+
+if (elBulan) {
+  elBulan.textContent =
+    namaBulanAktif;
+}
+
+
+if (elBulanPemasukan) {
+  elBulanPemasukan.textContent =
+    rp(bulanPemasukan);
+}
+
+
+if (elBulanPengeluaran) {
+  elBulanPengeluaran.textContent =
+    rp(bulanPengeluaran);
+}
+
+
+if (elBulanSaldo) {
+  elBulanSaldo.textContent =
+    rp(bulanSaldo);
+}
+
+
+if (elBulanTransaksi) {
+  elBulanTransaksi.textContent =
+    bulanTransaksi;
+}
   /* =========================
      TABEL
   ========================== */
