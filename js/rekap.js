@@ -253,7 +253,7 @@ const bulanAktif =
   semuaTransaksi.length
     ? String(
         semuaTransaksi[0].tanggal
-      ).slice(0, 7)
+      )
     : "";
 
 
@@ -269,7 +269,7 @@ state.kas.forEach(item => {
 
   if (
     String(item.tanggal)
-      .slice(0, 7) === bulanAktif
+     === bulanAktif
   ) {
 
     bulanPemasukan +=
