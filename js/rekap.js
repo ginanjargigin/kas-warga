@@ -5,26 +5,44 @@
 let rekapArusKasChart = null;
 let rekapKategoriChart = null;
 
-function getMonthKey(tanggal) {
 
-  const value = String(tanggal || "").trim();
+/* =========================================================
+   NORMALISASI TANGGAL
+========================================================= */
 
-  // Format YYYY-MM-DD
+function getDateKey(tanggal) {
+
+  const value =
+    String(tanggal || "").trim();
+
+  // YYYY-MM-DD
   if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-    return value.slice(0, 7);
+    return value;
   }
 
-  // Format DD/MM/YYYY
+  // DD/MM/YYYY
   if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) {
 
     const [day, month, year] =
       value.split("/");
 
-    return `${year}-${month}`;
+    return `${year}-${month}-${day}`;
   }
 
   return "";
 }
+
+
+function getMonthKey(tanggal) {
+
+  const dateKey =
+    getDateKey(tanggal);
+
+  return dateKey
+    ? dateKey.slice(0, 7)
+    : "";
+}
+
 
 /* =========================================================
    RENDER REKAP
@@ -36,9 +54,7 @@ function renderRekap() {
     state.kas.reduce(
       (total, item) =>
         total +
-        Number(
-          item.total || 0
-        ),
+        Number(item.total || 0),
       0
     );
 
@@ -47,9 +63,7 @@ function renderRekap() {
     state.pengeluaran.reduce(
       (total, item) =>
         total +
-        Number(
-          item.jumlah || 0
-        ),
+        Number(item.jumlah || 0),
       0
     );
 
@@ -60,7 +74,7 @@ function renderRekap() {
 
 
   /* =========================
-     SUMMARY
+     SUMMARY UTAMA
   ========================== */
 
   const rekapPemasukan =
@@ -98,42 +112,131 @@ function renderRekap() {
 
 
   /* =========================
-     INSIGHT
+     BULAN AKTIF
   ========================== */
 
-  const jumlahTransaksi =
-    state.kas.length +
-    state.pengeluaran.length;
+  const semuaTanggal = [
+
+    ...state.kas.map(
+      item =>
+        getDateKey(item.tanggal)
+    ),
+
+    ...state.pengeluaran.map(
+      item =>
+        getDateKey(item.tanggal)
+    )
+
+  ]
+    .filter(Boolean)
+    .sort()
+    .reverse();
 
 
-  const rataPemasukan =
-    state.kas.length
-      ? totalPemasukan /
-        state.kas.length
+  const bulanAktif =
+    semuaTanggal.length
+      ? semuaTanggal[0].slice(0, 7)
+      : "";
+
+
+  /* =========================
+     DATA BULAN AKTIF
+  ========================== */
+
+  const kasBulanIni =
+    state.kas.filter(
+      item =>
+        getMonthKey(item.tanggal)
+        === bulanAktif
+    );
+
+
+  const pengeluaranBulanIni =
+    state.pengeluaran.filter(
+      item =>
+        getMonthKey(item.tanggal)
+        === bulanAktif
+    );
+
+
+  const bulanPemasukan =
+    kasBulanIni.reduce(
+      (total, item) =>
+        total +
+        Number(item.total || 0),
+      0
+    );
+
+
+  const bulanPengeluaran =
+    pengeluaranBulanIni.reduce(
+      (total, item) =>
+        total +
+        Number(item.jumlah || 0),
+      0
+    );
+
+
+  const bulanArusBersih =
+    bulanPemasukan -
+    bulanPengeluaran;
+
+
+  /* =========================
+     STATUS PEMBAYARAN WARGA
+  ========================== */
+
+  const jumlahWarga =
+    state.warga.length;
+
+
+  const wargaSudahBayar =
+    new Set(
+      kasBulanIni
+        .map(
+          item =>
+            String(
+              item.nama || ""
+            ).trim()
+        )
+        .filter(Boolean)
+    );
+
+
+  const jumlahSudahBayar =
+    wargaSudahBayar.size;
+
+
+  const jumlahBelumBayar =
+    Math.max(
+      jumlahWarga -
+      jumlahSudahBayar,
+      0
+    );
+
+
+  /* =========================
+     RASIO PENGELUARAN
+  ========================== */
+
+  const rasioPengeluaran =
+    totalPemasukan > 0
+      ? (
+          totalPengeluaran /
+          totalPemasukan
+        ) * 100
       : 0;
 
 
-  const rataPengeluaran =
-    state.pengeluaran.length
-      ? totalPengeluaran /
-        state.pengeluaran.length
-      : 0;
-
-   /* =========================
-   RASIO PENGELUARAN
-========================== */
-
-const rasioPengeluaran =
-  totalPemasukan > 0
-    ? (totalPengeluaran /
-        totalPemasukan) * 100
-    : 0;
-
+  /* =========================
+     KATEGORI TERBESAR
+     BULAN AKTIF
+  ========================== */
 
   const kategoriTotal = {};
 
 
-  state.pengeluaran.forEach(
+  pengeluaranBulanIni.forEach(
     item => {
 
       const kategori =
@@ -167,19 +270,28 @@ const rasioPengeluaran =
       )[0];
 
 
+  /* =========================
+     INSIGHT
+  ========================== */
+
   const elTransaksi =
     document.getElementById(
       "rekapTransaksi"
     );
 
-  const elRataPemasukan =
+  const elSudahBayar =
     document.getElementById(
-      "rekapRataPemasukan"
+      "rekapSudahBayar"
     );
 
-  const elRataPengeluaran =
+  const elBelumBayar =
     document.getElementById(
-      "rekapRataPengeluaran"
+      "rekapBelumBayar"
+    );
+
+  const elRasioPengeluaran =
+    document.getElementById(
+      "rekapRasioPengeluaran"
     );
 
   const elKategoriTerbesar =
@@ -189,34 +301,38 @@ const rasioPengeluaran =
 
 
   if (elTransaksi) {
+
     elTransaksi.textContent =
-      jumlahTransaksi;
+      state.kas.length +
+      state.pengeluaran.length;
+
   }
 
 
-  if (elRataPemasukan) {
-    elRataPemasukan.textContent =
-      rp(rataPemasukan);
+  if (elSudahBayar) {
+
+    elSudahBayar.textContent =
+      `${jumlahSudahBayar} / ${jumlahWarga}`;
+
   }
 
 
-  if (elRataPengeluaran) {
-    elRataPengeluaran.textContent =
-      rp(rataPengeluaran);
+  if (elBelumBayar) {
+
+    elBelumBayar.textContent =
+      `${jumlahBelumBayar} warga`;
+
   }
 
-   const elRasioPengeluaran =
-  document.getElementById(
-    "rekapRasioPengeluaran"
-  );
 
-if (elRasioPengeluaran) {
+  if (elRasioPengeluaran) {
 
-  elRasioPengeluaran.textContent =
-    rasioPengeluaran
-      .toFixed(1) + "%";
+    elRasioPengeluaran.textContent =
+      rasioPengeluaran.toFixed(1) +
+      "%";
 
-}
+  }
+
 
   if (elKategoriTerbesar) {
 
@@ -227,181 +343,115 @@ if (elRasioPengeluaran) {
 
   }
 
-/* =========================
-   RINGKASAN BULANAN
-========================== */
 
-const semuaTransaksi = [
+  /* =========================
+     RINGKASAN BULANAN
+  ========================== */
 
-  ...state.kas.map(item => ({
-    tanggal: item.tanggal
-  })),
+  const elBulan =
+    document.getElementById(
+      "rekapBulan"
+    );
 
-  ...state.pengeluaran.map(item => ({
-    tanggal: item.tanggal
-  }))
+  const elBulanPemasukan =
+    document.getElementById(
+      "rekapBulanPemasukan"
+    );
 
-].sort(
-  (a, b) =>
-    b.tanggal.localeCompare(
-      a.tanggal
-    )
-);
+  const elBulanPengeluaran =
+    document.getElementById(
+      "rekapBulanPengeluaran"
+    );
 
+  const elBulanSaldo =
+    document.getElementById(
+      "rekapBulanSaldo"
+    );
 
-const bulanAktif =
-  semuaTransaksi.length
-    ? String(
-        semuaTransaksi[0].tanggal
-      )
-    : "";
-
-
-let bulanPemasukan = 0;
-let bulanPengeluaran = 0;
-
-let bulanTransaksi = 0;
+  const elBulanTransaksi =
+    document.getElementById(
+      "rekapBulanTransaksi"
+    );
 
 
-/* Pemasukan bulan aktif */
+  const namaBulan = [
 
-state.kas.forEach(item => {
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
 
-  if (
-    String(item.tanggal)
-     === bulanAktif
-  ) {
-
-    bulanPemasukan +=
-      Number(item.total || 0);
-
-    bulanTransaksi++;
-
-  }
-
-});
+  ];
 
 
-/* Pengeluaran bulan aktif */
+  let namaBulanAktif = "-";
 
-state.pengeluaran.forEach(item => {
 
-  if (
-    String(item.tanggal)
-      .slice(0, 7) === bulanAktif
-  ) {
+  if (bulanAktif) {
 
-    bulanPengeluaran +=
-      Number(item.jumlah || 0);
+    const [
+      tahun,
+      bulan
+    ] =
+      bulanAktif.split("-");
 
-    bulanTransaksi++;
+
+    namaBulanAktif =
+      `${namaBulan[
+        Number(bulan) - 1
+      ]} ${tahun}`;
 
   }
 
-});
+
+  if (elBulan) {
+
+    elBulan.textContent =
+      namaBulanAktif;
+
+  }
 
 
-const bulanSaldo =
-  bulanPemasukan -
-  bulanPengeluaran;
+  if (elBulanPemasukan) {
+
+    elBulanPemasukan.textContent =
+      rp(bulanPemasukan);
+
+  }
 
 
-/* Format nama bulan */
+  if (elBulanPengeluaran) {
 
-const namaBulan = [
+    elBulanPengeluaran.textContent =
+      rp(bulanPengeluaran);
 
-  "Januari",
-  "Februari",
-  "Maret",
-  "April",
-  "Mei",
-  "Juni",
-  "Juli",
-  "Agustus",
-  "September",
-  "Oktober",
-  "November",
-  "Desember"
-
-];
+  }
 
 
-let namaBulanAktif = "-";
+  if (elBulanSaldo) {
+
+    elBulanSaldo.textContent =
+      rp(bulanArusBersih);
+
+  }
 
 
-if (bulanAktif) {
+  if (elBulanTransaksi) {
 
-  const bagian =
-    bulanAktif.split("-");
+    elBulanTransaksi.textContent =
+      `${jumlahSudahBayar} / ${jumlahWarga}`;
 
-  const tahun =
-    bagian[0];
-
-  const nomorBulan =
-    Number(bagian[1]);
-
-  namaBulanAktif =
-    `${namaBulan[nomorBulan - 1]} ${tahun}`;
-
-}
+  }
 
 
-/* Masukkan ke HTML */
-
-const elBulan =
-  document.getElementById(
-    "rekapBulan"
-  );
-
-const elBulanPemasukan =
-  document.getElementById(
-    "rekapBulanPemasukan"
-  );
-
-const elBulanPengeluaran =
-  document.getElementById(
-    "rekapBulanPengeluaran"
-  );
-
-const elBulanSaldo =
-  document.getElementById(
-    "rekapBulanSaldo"
-  );
-
-const elBulanTransaksi =
-  document.getElementById(
-    "rekapBulanTransaksi"
-  );
-
-
-if (elBulan) {
-  elBulan.textContent =
-    namaBulanAktif;
-}
-
-
-if (elBulanPemasukan) {
-  elBulanPemasukan.textContent =
-    rp(bulanPemasukan);
-}
-
-
-if (elBulanPengeluaran) {
-  elBulanPengeluaran.textContent =
-    rp(bulanPengeluaran);
-}
-
-
-if (elBulanSaldo) {
-  elBulanSaldo.textContent =
-    rp(bulanSaldo);
-}
-
-
-if (elBulanTransaksi) {
-  elBulanTransaksi.textContent =
-    bulanTransaksi;
-}
   /* =========================
      TABEL
   ========================== */
@@ -411,23 +461,17 @@ if (elBulanTransaksi) {
     ...state.kas.map(
       x => ({
 
-        id:
-          x.id,
+        id: x.id,
 
-        tanggal:
-          x.tanggal,
+        tanggal: x.tanggal,
 
-        jenis:
-          "Kas",
+        jenis: "Kas",
 
-        nama:
-          x.nama,
+        nama: x.nama,
 
-        jumlah:
-          x.total,
+        jumlah: x.total,
 
-        ket:
-          x.keterangan
+        ket: x.keterangan
 
       })
     ),
@@ -436,32 +480,27 @@ if (elBulanTransaksi) {
     ...state.pengeluaran.map(
       x => ({
 
-        id:
-          x.id,
+        id: x.id,
 
-        tanggal:
-          x.tanggal,
+        tanggal: x.tanggal,
 
-        jenis:
-          "Pengeluaran",
+        jenis: "Pengeluaran",
 
-        nama:
-          x.kategori,
+        nama: x.kategori,
 
-        jumlah:
-          x.jumlah,
+        jumlah: x.jumlah,
 
-        ket:
-          x.keterangan
+        ket: x.keterangan
 
       })
     )
 
   ].sort(
     (a, b) =>
-      b.tanggal.localeCompare(
-        a.tanggal
-      )
+      getDateKey(b.tanggal)
+        .localeCompare(
+          getDateKey(a.tanggal)
+        )
   );
 
 
@@ -515,13 +554,10 @@ if (elBulanTransaksi) {
       .join("");
 
 
-  /* =========================
-     GRAFIK
-  ========================== */
-
   renderRekapCharts(
     state.kas,
-    state.pengeluaran
+    state.pengeluaran,
+    bulanAktif
   );
 
 }
@@ -533,7 +569,8 @@ if (elBulanTransaksi) {
 
 function renderRekapCharts(
   kas,
-  pengeluaran
+  pengeluaran,
+  bulanAktif
 ) {
 
   if (
@@ -555,9 +592,9 @@ function renderRekapCharts(
     item => {
 
       const bulan =
-        String(
-          item.tanggal || ""
-        ).slice(0, 7);
+        getMonthKey(
+          item.tanggal
+        );
 
 
       if (!bulan) {
@@ -568,8 +605,11 @@ function renderRekapCharts(
       if (!monthly[bulan]) {
 
         monthly[bulan] = {
+
           pemasukan: 0,
+
           pengeluaran: 0
+
         };
 
       }
@@ -588,9 +628,9 @@ function renderRekapCharts(
     item => {
 
       const bulan =
-        String(
-          item.tanggal || ""
-        ).slice(0, 7);
+        getMonthKey(
+          item.tanggal
+        );
 
 
       if (!bulan) {
@@ -601,8 +641,11 @@ function renderRekapCharts(
       if (!monthly[bulan]) {
 
         monthly[bulan] = {
+
           pemasukan: 0,
+
           pengeluaran: 0
+
         };
 
       }
@@ -626,10 +669,15 @@ function renderRekapCharts(
     months.map(
       month => {
 
-        const [year, monthNumber] =
+        const [
+          year,
+          monthNumber
+        ] =
           month.split("-");
 
+
         const names = [
+
           "Jan",
           "Feb",
           "Mar",
@@ -642,7 +690,9 @@ function renderRekapCharts(
           "Okt",
           "Nov",
           "Des"
+
         ];
+
 
         return (
           names[
@@ -669,7 +719,9 @@ function renderRekapCharts(
   if (arusKasCanvas) {
 
     if (rekapArusKasChart) {
+
       rekapArusKasChart.destroy();
+
     }
 
 
@@ -687,6 +739,7 @@ function renderRekapCharts(
             datasets: [
 
               {
+
                 label:
                   "Pemasukan",
 
@@ -701,9 +754,12 @@ function renderRekapCharts(
                   "#22c55e",
 
                 borderRadius: 6
+
               },
 
+
               {
+
                 label:
                   "Pengeluaran",
 
@@ -718,6 +774,7 @@ function renderRekapCharts(
                   "#ef4444",
 
                 borderRadius: 6
+
               }
 
             ]
@@ -768,6 +825,7 @@ function renderRekapCharts(
           }
 
         }
+
       );
 
   }
@@ -775,33 +833,45 @@ function renderRekapCharts(
 
   /* =========================
      KATEGORI PENGELUARAN
+     BULAN AKTIF
   ========================== */
 
   const kategoriTotal = {};
 
 
-  pengeluaran.forEach(
-    item => {
+  pengeluaran
 
-      const kategori =
-        String(
-          item.kategori ||
-          "Lain-lain"
-        ).trim();
+    .filter(
+      item =>
+        getMonthKey(item.tanggal)
+        === bulanAktif
+    )
+
+    .forEach(
+      item => {
+
+        const kategori =
+          String(
+            item.kategori ||
+            "Lain-lain"
+          ).trim();
 
 
-      if (!kategoriTotal[kategori]) {
-        kategoriTotal[kategori] = 0;
+        if (!kategoriTotal[kategori]) {
+
+          kategoriTotal[kategori] =
+            0;
+
+        }
+
+
+        kategoriTotal[kategori] +=
+          Number(
+            item.jumlah || 0
+          );
+
       }
-
-
-      kategoriTotal[kategori] +=
-        Number(
-          item.jumlah || 0
-        );
-
-    }
-  );
+    );
 
 
   const kategoriSorted =
@@ -814,18 +884,6 @@ function renderRekapCharts(
       );
 
 
-  const kategoriLabels =
-    kategoriSorted.map(
-      x => x[0]
-    );
-
-
-  const kategoriValues =
-    kategoriSorted.map(
-      x => x[1]
-    );
-
-
   const kategoriCanvas =
     document.getElementById(
       "rekapKategoriChart"
@@ -835,7 +893,9 @@ function renderRekapCharts(
   if (kategoriCanvas) {
 
     if (rekapKategoriChart) {
+
       rekapKategoriChart.destroy();
+
     }
 
 
@@ -849,21 +909,27 @@ function renderRekapCharts(
           data: {
 
             labels:
-              kategoriLabels,
+              kategoriSorted.map(
+                x => x[0]
+              ),
 
             datasets: [
 
               {
+
                 label:
                   "Pengeluaran",
 
                 data:
-                  kategoriValues,
+                  kategoriSorted.map(
+                    x => x[1]
+                  ),
 
                 backgroundColor:
                   "#ef4444",
 
                 borderRadius: 6
+
               }
 
             ]
@@ -882,7 +948,9 @@ function renderRekapCharts(
             plugins: {
 
               legend: {
+
                 display: false
+
               },
 
               tooltip: {
@@ -920,6 +988,7 @@ function renderRekapCharts(
           }
 
         }
+
       );
 
   }
