@@ -1589,3 +1589,25 @@ button.danger:active {
   }
 
 }
+
+/* =========================================================
+   REKAP — FINAL COLOR SYSTEM
+   ========================================================= */
+
+.rekap-insight-grid .insight-card {
+  background: #ffffff !important;
+  background-image: none !important;
+
+  border: 1px solid #e2e8f0 !important;
+
+  box-shadow:
+    0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+.rekap-insight-grid .insight-card span {
+  color: #64748b;
+}
+
+.rekap-insight-grid .insight-card b {
+  color: #173f88 !important;
+}
