@@ -901,3 +901,87 @@ tbody tr:last-child td {
     grid-template-columns: 1fr;
   }
 }
+/* =========================================================
+   KPI TYPOGRAPHY — MORE EYE-CATCHING
+   ========================================================= */
+
+#home .stat {
+  padding: 18px 20px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+
+/* Angka KPI */
+#home .stat b {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 25px;
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* Saldo */
+#home .saldo-card b {
+  color: #166534;
+}
+
+
+/* Pemasukan */
+#home .pemasukan-card b {
+  color: #1d4ed8;
+}
+
+
+/* Pengeluaran */
+#home .pengeluaran-card b {
+  color: #b91c1c;
+}
+
+
+/* Warga */
+#home .grid > .stat:not(
+  .saldo-card,
+  .pemasukan-card,
+  .pengeluaran-card
+) b {
+  color: #111827;
+}
+
+
+/* =========================================================
+   LABEL KPI
+   ========================================================= */
+
+#home .saldo-card,
+#home .pemasukan-card,
+#home .pengeluaran-card,
+#home .grid > .stat:not(
+  .saldo-card,
+  .pemasukan-card,
+  .pengeluaran-card
+) {
+  color: #26364d;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+  #home .stat b {
+    font-size: 23px;
+  }
+
+}
