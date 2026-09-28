@@ -1295,3 +1295,297 @@ button.danger:active {
   }
 
 }
+
+/* =========================================================
+   REKAP — CLEAN COLOR SYSTEM
+   Hanya 3 warna utama:
+   Hijau = pemasukan
+   Merah = pengeluaran
+   Biru = informasi / saldo
+   ========================================================= */
+
+
+/* =========================================================
+   SUMMARY UTAMA
+   ========================================================= */
+
+.rekap-summary-card {
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+
+/* Pemasukan */
+
+.rekap-summary-card.pemasukan {
+  background: #dcfce7 !important;
+  background-image: none !important;
+
+  border-color: #bbf7d0 !important;
+}
+
+.rekap-summary-card.pemasukan b {
+  color: #166534;
+}
+
+
+/* Pengeluaran */
+
+.rekap-summary-card.pengeluaran {
+  background: #fee2e2 !important;
+  background-image: none !important;
+
+  border-color: #fecaca !important;
+}
+
+.rekap-summary-card.pengeluaran b {
+  color: #b91c1c;
+}
+
+
+/* Saldo */
+
+.rekap-summary-card.saldo {
+  background: #dbeafe !important;
+  background-image: none !important;
+
+  border-color: #bfdbfe !important;
+}
+
+.rekap-summary-card.saldo b {
+  color: #1e40af;
+}
+
+
+/* =========================================================
+   INSIGHT — SEMUA BIRU/NETRAL
+   ========================================================= */
+
+.rekap-insight-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-bottom: 18px;
+}
+
+
+.insight-card {
+  background: #f8fafc !important;
+  background-image: none !important;
+
+  border: 1px solid #e2e8f0 !important;
+
+  box-shadow:
+    0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+
+.insight-card span {
+  color: #64748b;
+}
+
+
+.insight-card b {
+  color: #173f88 !important;
+
+  font-size: 21px;
+}
+
+
+/* =========================================================
+   RINGKASAN BULANAN
+   ========================================================= */
+
+.monthly-summary-card {
+  margin-bottom: 18px;
+
+  background: #f8fafc !important;
+  background-image: none !important;
+
+  border: 1px solid #dbe5f1 !important;
+
+  box-shadow:
+    0 7px 20px rgba(15, 23, 42, 0.05);
+}
+
+
+.monthly-summary-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 20px;
+
+  margin-bottom: 18px;
+}
+
+
+.monthly-summary-header h3 {
+  margin: 0 0 3px;
+}
+
+
+.monthly-summary-header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+.monthly-highlight {
+  min-width: 220px;
+
+  padding: 11px 14px;
+
+  background: #eff6ff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 10px;
+}
+
+
+.monthly-highlight span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+.monthly-highlight b {
+  color: #17479e;
+
+  font-size: 14px;
+}
+
+
+.monthly-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+.monthly-summary-grid > div {
+  padding: 13px 14px;
+
+  background: #ffffff;
+
+  border: 1px solid #e6ebf2;
+
+  border-radius: 10px;
+}
+
+
+.monthly-summary-grid span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+.monthly-summary-grid b {
+  color: #173f88;
+
+  font-size: 17px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   GRAFIK
+   ========================================================= */
+
+.rekap-chart-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-bottom: 18px;
+}
+
+
+.chart-card {
+  min-width: 0;
+
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+
+.chart-subtitle {
+  color: #64748b;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .rekap-insight-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .monthly-summary-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .rekap-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rekap-insight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rekap-chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .monthly-summary-header {
+    flex-direction: column;
+  }
+
+  .monthly-highlight {
+    width: 100%;
+  }
+
+  .monthly-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
