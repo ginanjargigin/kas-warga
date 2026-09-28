@@ -1611,3 +1611,132 @@ button.danger:active {
 .rekap-insight-grid .insight-card b {
   color: #173f88 !important;
 }
+
+/* =========================================================
+   REKAP — FINAL
+   ========================================================= */
+
+#rekap .rekap-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+#rekap .rekap-summary-card {
+  min-width: 0;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+
+/* INSIGHT — NETRAL */
+
+#rekap .insight-card {
+  background: #ffffff !important;
+  background-image: none !important;
+
+  border: 1px solid #e2e8f0 !important;
+
+  box-shadow:
+    0 6px 18px rgba(15, 23, 42, 0.05);
+
+  border-radius: 14px;
+}
+
+#rekap .insight-card span {
+  color: #64748b;
+}
+
+#rekap .insight-card b {
+  color: #173f88 !important;
+}
+
+
+/* RINGKASAN BULANAN */
+
+#rekap .monthly-summary-card {
+  background: #f8fafc !important;
+  background-image: none !important;
+
+  border: 1px solid #dbe5f1 !important;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 7px 20px rgba(15, 23, 42, 0.05);
+}
+
+#rekap .monthly-highlight {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+}
+
+#rekap .monthly-summary-grid > div {
+  background: #ffffff;
+  border: 1px solid #e6ebf2;
+}
+
+#rekap .monthly-summary-grid b {
+  color: #173f88;
+}
+
+
+/* GRAFIK */
+
+#rekap .rekap-chart-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-bottom: 18px;
+}
+
+#rekap .chart-card {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+  #rekap .rekap-insight-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  #rekap .monthly-summary-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  #rekap .rekap-chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  #rekap .rekap-summary-grid,
+  #rekap .rekap-insight-grid,
+  #rekap .monthly-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #rekap .monthly-summary-header {
+    flex-direction: column;
+  }
+
+  #rekap .monthly-highlight {
+    width: 100%;
+    min-width: 0;
+  }
+
+}
