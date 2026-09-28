@@ -14,286 +14,565 @@
     Transparansi Kas Gang RT 027
   </title>
 
-  <style>
+  /* =========================================================
+   TRANSPARANSI KAS WARGA
+   ========================================================= */
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
+html {
+  scroll-behavior: smooth;
+}
 
-      font-family:
-        Arial,
-        sans-serif;
+body {
+  margin: 0;
 
-      background: #f4f7fb;
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
 
-      color: #172033;
-    }
+  background: #f5f7fb;
 
-    header {
-      background: #0f3d91;
+  color: #172033;
 
-      color: white;
+  line-height: 1.5;
+}
 
-      padding: 24px 20px;
-    }
 
-    .wrap {
-      width: min(
-        1100px,
-        calc(100% - 30px)
-      );
+/* =========================================================
+   CONTAINER
+   ========================================================= */
 
-      margin: auto;
-    }
+.wrap {
+  width: min(1100px, calc(100% - 32px));
 
-    .header-title {
-      margin: 0;
+  margin: 0 auto;
+}
 
-      font-size: 24px;
 
-      font-weight: 800;
-    }
+/* =========================================================
+   HEADER
+   ========================================================= */
 
-    .header-subtitle {
-      margin-top: 6px;
+header {
+  background: #17479e;
 
-      font-size: 14px;
+  color: #ffffff;
 
-      opacity: 0.85;
-    }
+  padding: 25px 0;
 
-    main {
-      padding: 24px 0 40px;
-    }
+  box-shadow:
+    0 4px 18px rgba(23, 71, 158, 0.14);
+}
 
-    .toolbar {
-      display: flex;
+.header-title {
+  margin: 0;
 
-      justify-content: space-between;
+  font-size: 24px;
 
-      align-items: center;
+  font-weight: 800;
 
-      gap: 12px;
+  letter-spacing: -0.4px;
+}
 
-      margin-bottom: 18px;
+.header-subtitle {
+  margin-top: 4px;
 
-      flex-wrap: wrap;
-    }
+  font-size: 13px;
 
-    .status {
-      font-size: 13px;
+  opacity: 0.82;
+}
 
-      color: #64748b;
-    }
 
-    button {
-      border: 0;
+/* =========================================================
+   MAIN
+   ========================================================= */
 
-      border-radius: 9px;
+main {
+  padding: 28px 0 45px;
+}
 
-      padding: 10px 16px;
 
-      cursor: pointer;
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
 
-      font-weight: 700;
-    }
-    .back-btn {
-  background: #e8eef8;
+.toolbar {
+  display: flex;
 
-  color: #17315e;
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+
+  flex-wrap: wrap;
+}
+
+.status {
+  font-size: 13px;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+button,
+.back-btn {
+  border: 0;
+
+  border-radius: 10px;
+
+  padding: 10px 16px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+button:active,
+.back-btn:active {
+  transform: translateY(1px);
+}
+
+
+/* Kembali */
+
+.back-btn {
+  display: inline-block;
+
+  text-decoration: none;
+
+  background: #eaf0f8;
+
+  color: #173b76;
+
+  margin-right: 8px;
+
+  box-shadow:
+    0 3px 10px rgba(15, 23, 42, 0.04);
 }
 
 .back-btn:hover {
-  background: #dbe6f7;
+  background: #dce6f4;
 }
 
-    .refresh-btn {
-      background: #1769d1;
 
-      color: white;
-    }
+/* Refresh */
 
-    .refresh-btn:hover {
-      background: #0f57b7;
-    }
+.refresh-btn {
+  background: #1769d1;
 
-    .grid {
-      display: grid;
+  color: #ffffff;
 
-      grid-template-columns:
-        repeat(4, 1fr);
+  box-shadow:
+    0 4px 12px rgba(23, 105, 209, 0.18);
+}
 
-      gap: 14px;
+.refresh-btn:hover {
+  background: #0f57b7;
 
-      margin-bottom: 18px;
-    }
+  box-shadow:
+    0 6px 16px rgba(23, 105, 209, 0.22);
+}
 
-    .card {
-      background: white;
 
-      border-radius: 15px;
+/* =========================================================
+   SUMMARY GRID
+   ========================================================= */
 
-      padding: 18px;
+.grid {
+  display: grid;
 
-      box-shadow:
-        0 7px 22px
-        rgba(24, 59, 93, 0.08);
-    }
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
 
-    .stat-title {
-      color: #64748b;
+  gap: 14px;
 
-      font-size: 14px;
-    }
+  margin-bottom: 18px;
+}
 
-    .stat-value {
-      display: block;
 
-      margin-top: 7px;
+/* =========================================================
+   CARD
+   ========================================================= */
 
-      font-size: 24px;
+.card {
+  background: #ffffff;
 
-      font-weight: 800;
+  border: 1px solid #e6ebf2;
 
-      color: #172033;
-    }
+  border-radius: 16px;
 
-    .section-title {
-      margin-top: 0;
+  padding: 20px;
 
-      margin-bottom: 14px;
+  box-shadow:
+    0 8px 24px rgba(24, 59, 93, 0.07);
+}
 
-      font-size: 18px;
-    }
 
-    .tablewrap {
-      overflow-x: auto;
-    }
+/* =========================================================
+   SUMMARY CARD
+   ========================================================= */
 
-    table {
-      width: 100%;
+.stat-title {
+  color: #64748b;
 
-      border-collapse: collapse;
+  font-size: 14px;
 
-      font-size: 14px;
-    }
+  font-weight: 500;
+}
 
-    th,
-    td {
-      padding: 10px;
+.stat-value {
+  display: block;
 
-      border-bottom:
-        1px solid #e6eaf0;
+  margin-top: 6px;
 
-      text-align: left;
+  font-size: 25px;
 
-      white-space: nowrap;
-    }
+  font-weight: 800;
 
-    th {
-      background: #f3f6fa;
-    }
+  line-height: 1.2;
 
-    .amount {
-      font-weight: 700;
-    }
+  letter-spacing: -0.5px;
 
-    .income {
-      color: #18794e;
-    }
+  color: #172033;
+}
 
-    .expense {
-      color: #c62828;
-    }
 
-    .empty {
-      padding: 18px;
+/* Jumlah warga */
 
-      text-align: center;
+#jumlahWarga {
+  color: #111827;
+}
 
-      color: #64748b;
-    }
 
-    .error {
-      background: #fef2f2;
+/* Total pemasukan */
 
-      color: #991b1b;
+.stat-value.income {
+  color: #16834f;
+}
 
-      border-radius: 10px;
 
-      padding: 14px;
+/* Total pengeluaran */
 
-      margin-bottom: 18px;
+.stat-value.expense {
+  color: #c62828;
+}
 
-      display: none;
 
-      line-height: 1.5;
-    }
+/* Saldo */
 
-    .loading {
-      text-align: center;
+#saldo {
+  color: #173f88;
+}
 
-      padding: 30px;
 
-      color: #64748b;
-    }
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
 
-    .note {
-      margin-top: 20px;
+.section-title {
+  margin: 0 0 16px;
 
-      padding: 14px 16px;
+  color: #172033;
 
-      background: #eef4ff;
+  font-size: 18px;
 
-      border-radius: 10px;
+  font-weight: 800;
 
-      color: #475569;
+  letter-spacing: -0.2px;
+}
 
-      font-size: 13px;
 
-      line-height: 1.6;
-    }
+/* =========================================================
+   TABLE
+   ========================================================= */
 
-    footer {
-      text-align: center;
+.tablewrap {
+  width: 100%;
 
-      padding: 20px;
+  overflow-x: auto;
 
-      color: #64748b;
+  border-radius: 10px;
+}
 
-      font-size: 12px;
-    }
+table {
+  width: 100%;
 
-    @media (max-width: 800px) {
+  border-collapse: collapse;
 
-      .grid {
-        grid-template-columns:
-          1fr 1fr;
-      }
+  font-size: 14px;
 
-    }
+  background: #ffffff;
+}
 
-    @media (max-width: 520px) {
+th,
+td {
+  padding: 11px 10px;
 
-      .grid {
-        grid-template-columns:
-          1fr;
-      }
+  border-bottom: 1px solid #e6eaf0;
 
-      .header-title {
-        font-size: 20px;
-      }
+  text-align: left;
 
-      .stat-value {
-        font-size: 21px;
-      }
+  white-space: nowrap;
+}
 
-    }
+th {
+  background: #f3f6fa;
 
-  </style>
+  color: #34445d;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.2px;
+}
+
+tbody tr {
+  transition:
+    background 0.15s ease;
+}
+
+tbody tr:hover {
+  background: #f8faff;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+
+/* =========================================================
+   AMOUNT
+   ========================================================= */
+
+.amount {
+  font-weight: 800;
+}
+
+.income {
+  color: #16834f;
+}
+
+.expense {
+  color: #c62828;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loading {
+  text-align: center;
+
+  padding: 28px;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.empty {
+  padding: 20px;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.error {
+  display: none;
+
+  margin-bottom: 18px;
+
+  padding: 14px 16px;
+
+  border-radius: 10px;
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  color: #991b1b;
+
+  line-height: 1.5;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   NOTE
+   ========================================================= */
+
+.note {
+  margin-top: 20px;
+
+  padding: 14px 16px;
+
+  background: #eef4ff;
+
+  border: 1px solid #dbe7fb;
+
+  border-radius: 10px;
+
+  color: #475569;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  text-align: center;
+
+  padding: 20px;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 9px;
+
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #edf1f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b9c4d3;
+
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8f9daf;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+  .wrap {
+    width: calc(100% - 20px);
+  }
+
+  header {
+    padding: 20px 0;
+  }
+
+  .header-title {
+    font-size: 20px;
+  }
+
+  .header-subtitle {
+    font-size: 12px;
+  }
+
+  main {
+    padding: 20px 0 35px;
+  }
+
+  .toolbar {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .toolbar > div:last-child {
+    width: 100%;
+  }
+
+  .back-btn,
+  .refresh-btn {
+    display: inline-block;
+
+    margin-bottom: 5px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 17px;
+  }
+
+  .stat-value {
+    font-size: 23px;
+  }
+
+  .section-title {
+    font-size: 17px;
+  }
+
+}
 
 </head>
 
