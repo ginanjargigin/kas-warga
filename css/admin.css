@@ -1206,3 +1206,92 @@ button.danger:active {
 #rekap .insight-card:nth-child(4) b {
   color: #92400e;
 }
+
+/* =========================================================
+   REKAP — SUMMARY HORIZONTAL
+   ========================================================= */
+
+.rekap-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-bottom: 18px;
+}
+
+.rekap-summary-card {
+  min-width: 0;
+  padding: 20px;
+}
+
+.rekap-summary-card span {
+  display: block;
+
+  font-size: 13px;
+
+  color: #475569;
+
+  margin-bottom: 7px;
+}
+
+.rekap-summary-card b {
+  display: block;
+
+  font-size: 24px;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+
+/* Pemasukan */
+
+.rekap-summary-card.pemasukan {
+  background: #dcfce7 !important;
+  border-color: #bbf7d0 !important;
+}
+
+.rekap-summary-card.pemasukan b {
+  color: #166534;
+}
+
+
+/* Pengeluaran */
+
+.rekap-summary-card.pengeluaran {
+  background: #fee2e2 !important;
+  border-color: #fecaca !important;
+}
+
+.rekap-summary-card.pengeluaran b {
+  color: #b91c1c;
+}
+
+
+/* Saldo */
+
+.rekap-summary-card.saldo {
+  background: #dbeafe !important;
+  border-color: #bfdbfe !important;
+}
+
+.rekap-summary-card.saldo b {
+  color: #1e40af;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .rekap-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
