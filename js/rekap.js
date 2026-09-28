@@ -5,6 +5,26 @@
 let rekapArusKasChart = null;
 let rekapKategoriChart = null;
 
+function getMonthKey(tanggal) {
+
+  const value = String(tanggal || "").trim();
+
+  // Format YYYY-MM-DD
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return value.slice(0, 7);
+  }
+
+  // Format DD/MM/YYYY
+  if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) {
+
+    const [day, month, year] =
+      value.split("/");
+
+    return `${year}-${month}`;
+  }
+
+  return "";
+}
 
 /* =========================================================
    RENDER REKAP
