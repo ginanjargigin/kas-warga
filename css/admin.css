@@ -353,40 +353,61 @@ header .btn2:hover {
 
 
 /* =========================================================
-   DASHBOARD KPI
+   DASHBOARD KPI — SINGLE COLOR TONE
    ========================================================= */
 
-.grid {
-  display: grid;
+.saldo-card {
+  background: #dcfce7 !important;
+  border: 1px solid #bbf7d0;
 
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-
-  gap: 14px;
+  box-shadow:
+    0 8px 22px rgba(34, 197, 94, 0.08);
 }
 
-.stat {
-  min-height: 90px;
-
-  padding: 17px 18px;
-
-  font-size: 14px;
-
-  color: #25344d;
+.saldo-card b {
+  color: #166534;
 }
 
-.stat b {
-  display: block;
 
-  margin-top: 5px;
+.pemasukan-card {
+  background: #dbeafe !important;
+  border: 1px solid #bfdbfe;
 
-  color: #101828;
-
-  font-size: 25px;
-  font-weight: 800;
-
-  letter-spacing: -0.5px;
+  box-shadow:
+    0 8px 22px rgba(59, 130, 246, 0.08);
 }
 
+.pemasukan-card b {
+  color: #1e40af;
+}
+
+
+.pengeluaran-card {
+  background: #fee2e2 !important;
+  border: 1px solid #fecaca;
+
+  box-shadow:
+    0 8px 22px rgba(239, 68, 68, 0.08);
+}
+
+.pengeluaran-card b {
+  color: #991b1b;
+}
+
+
+/* Kartu Warga */
+.grid .stat:not(
+  .saldo-card,
+  .pemasukan-card,
+  .pengeluaran-card
+) {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 8px 22px rgba(15, 23, 42, 0.05);
+}
 
 /* =========================================================
    SALDO
