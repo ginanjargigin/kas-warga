@@ -853,6 +853,14 @@ tbody tr:last-child td {
   font-size: 13px;
 }
 
+#rekap .monthly-summary-header .monthly-period {
+  margin-top: 2px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
 #rekap .monthly-highlight {
   min-width: 220px;
 
