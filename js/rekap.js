@@ -353,6 +353,11 @@ function renderRekap() {
       "rekapBulan"
     );
 
+   const elPeriode =
+  document.getElementById(
+    "rekapPeriode"
+  );
+
   const elBulanPemasukan =
     document.getElementById(
       "rekapBulanPemasukan"
@@ -418,6 +423,35 @@ function renderRekap() {
       namaBulanAktif;
 
   }
+
+   if (elPeriode) {
+
+  if (bulanAktif) {
+
+    const [
+      tahun,
+      bulan
+    ] =
+      bulanAktif.split("-");
+
+    const jumlahHari =
+      new Date(
+        Number(tahun),
+        Number(bulan),
+        0
+      ).getDate();
+
+    elPeriode.textContent =
+      `Periode data: 1–${jumlahHari} ${namaBulan[Number(bulan) - 1]} ${tahun}`;
+
+  } else {
+
+    elPeriode.textContent =
+      "Periode data: -";
+
+  }
+
+}
 
 
   if (elBulanPemasukan) {
