@@ -153,26 +153,26 @@ module.exports =
        AUTHENTICATION
     ========================== */
 
-    const authorization =
-      req.headers.authorization ||
-      "";
+   const authorization =
+  req.headers.authorization || "";
 
+const devBypass =
+  process.env.DEV_BYPASS_AUTH === "true";
 
-    if (
-      !authorization.startsWith(
-        "Bearer "
-      ) ||
-      !verify(
-        authorization.slice(7),
-        process.env.APP_SECRET
-      )
-    ) {
-
-      return res.status(401).json({
-        error:
-          "Sesi tidak valid."
-      });
-    }
+if (
+  !devBypass &&
+  (
+    !authorization.startsWith("Bearer ") ||
+    !verify(
+      authorization.slice(7),
+      process.env.APP_SECRET
+    )
+  )
+) {
+  return res.status(401).json({
+    error: "Sesi tidak valid."
+  });
+}
 
 
     /* =========================
