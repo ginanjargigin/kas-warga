@@ -1,17 +1,51 @@
-KAS GANG RT 027 — JSONBin + Vercel
+# KAS GANG WARGA — JSONBin + Vercel
 
-Fitur: login admin, dashboard saldo/pemasukan/pengeluaran, data warga, pembayaran kas+denda, pengeluaran, pencarian, dan rekap.
+Aplikasi web untuk pengelolaan kas warga RT 027 dengan sistem login admin, dashboard, data warga, pembayaran kas, pengeluaran, pencarian data, dan rekap transaksi.
 
-1. JSONBin: buat Private Bin berisi {"warga":[],"kas":[],"pengeluaran":[]}.
-2. Buat Access Key dengan permission Bins Read + Update.
-3. Catat BIN ID dan Access Key.
-4. Upload project ini ke GitHub lalu Import ke Vercel.
-5. Tambahkan Environment Variables:
-JSONBIN_BIN_ID=ID_BIN
-JSONBIN_ACCESS_KEY=ACCESS_KEY
-ADMIN_EMAIL=email admin
-ADMIN_PASSWORD=password admin
-APP_SECRET=string_acak_panjang_minimal_32_karakter
-6. Deploy dan buka URL Vercel.
+## URL Aplikasi
 
-PENTING: jangan taruh Master Key JSONBin di browser. Project ini menyimpan Access Key di server Vercel. Password admin versi ini juga berada di Environment Variable Vercel.
+Website:
+
+https://kas-gang-warga.vercel.app/
+
+---
+
+## Fitur
+
+- Login admin
+- Dashboard saldo, pemasukan, dan pengeluaran
+- Data warga
+- Pembayaran kas warga
+- Pencatatan denda
+- Pencatatan pengeluaran
+- Pencarian dan penyaringan data
+- Rekap transaksi
+- Rekap pemasukan dan pengeluaran berdasarkan periode
+- Grafik pemasukan dan pengeluaran
+- Penyimpanan data menggunakan JSONBin
+- API serverless menggunakan Vercel
+- Access Key JSONBin disimpan di server melalui Environment Variables
+- Navigasi form menggunakan tombol `Enter` untuk berpindah ke kolom berikutnya
+- Dukungan navigasi form pada komputer dan perangkat mobile
+
+---
+
+# Arsitektur
+
+Aplikasi menggunakan struktur:
+
+```text
+Browser
+   │
+   ▼
+Frontend HTML / CSS / JavaScript
+   │
+   ▼
+Vercel Serverless API
+   │
+   ├── Login & autentikasi
+   │
+   └── Akses JSONBin
+            │
+            ▼
+        JSONBin
