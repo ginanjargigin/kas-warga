@@ -398,13 +398,18 @@ document
           );
 
 
-        document
-          .getElementById(
-            button.dataset.tab
-          )
-          .classList.add(
-            "active"
-          );
+       const targetSection =
+           document.getElementById(
+             button.dataset.tab
+           );
+         
+         targetSection.classList.add(
+           "active"
+         );
+         
+         focusFirstField(
+           targetSection
+         );
       };
 
     }
@@ -492,143 +497,77 @@ if (DEV_MODE || token) {
 }
 
 /* =========================================================
-   NAVIGASI FORM DENGAN TOMBOL PANAH
+   NAVIGASI FORM DENGAN ENTER
 ========================================================= */
 
-document.addEventListener(
-  "keydown",
-  event => {
+document.addEventListener("keydown", event => {
 
-    if (
-      event.key !== "ArrowDown" &&
-      event.key !== "ArrowUp"
-    ) {
-      return;
-    }
-
-    const active =
-      document.activeElement;
-
-    if (
-      !active ||
-      !active.matches(
-        "input, select, textarea"
-      )
-    ) {
-      return;
-    }
-
-    const section =
-      active.closest(".section");
-
-    if (!section) {
-      return;
-    }
-
-    const fields =
-      Array.from(
-        section.querySelectorAll(
-          "input:not([type='hidden']), select, textarea"
-        )
-      ).filter(
-        field =>
-          !field.disabled &&
-          field.offsetParent !== null
-      );
-
-    const currentIndex =
-      fields.indexOf(active);
-
-    if (currentIndex === -1) {
-      return;
-    }
-
-    const nextIndex =
-      event.key === "ArrowDown"
-        ? currentIndex + 1
-        : currentIndex - 1;
-
-    if (
-      nextIndex < 0 ||
-      nextIndex >= fields.length
-    ) {
-      return;
-    }
-
-    event.preventDefault();
-
-    fields[nextIndex].focus();
-
+  if (event.key !== "Enter") {
+    return;
   }
-);
+
+  const active = document.activeElement;
+
+  if (
+    !active ||
+    !active.matches("input, select, textarea")
+  ) {
+    return;
+  }
+
+  const section = active.closest(".section");
+
+  if (!section) {
+    return;
+  }
+
+  const fields = Array.from(
+    section.querySelectorAll(
+      "input:not([type='hidden']), select, textarea"
+    )
+  ).filter(
+    field =>
+      !field.disabled &&
+      field.offsetParent !== null
+  );
+
+  const currentIndex = fields.indexOf(active);
+
+  if (currentIndex === -1) {
+    return;
+  }
+
+  const nextField = fields[currentIndex + 1];
+
+  if (!nextField) {
+    return;
+  }
+
+  event.preventDefault();
+  nextField.focus();
+
+});
 
 /* =========================================================
-   NAVIGASI FORM DENGAN TOMBOL PANAH
+   AUTO FOCUS KOLOM PERTAMA
 ========================================================= */
 
-document.addEventListener(
-  "keydown",
-  event => {
+function focusFirstField(section) {
 
-    if (
-      event.key !== "ArrowDown" &&
-      event.key !== "ArrowUp"
-    ) {
-      return;
-    }
-
-    const active =
-      document.activeElement;
-
-    if (
-      !active ||
-      !active.matches(
-        "input, select, textarea"
-      )
-    ) {
-      return;
-    }
-
-    const section =
-      active.closest(".section");
-
-    if (!section) {
-      return;
-    }
-
-    const fields =
-      Array.from(
-        section.querySelectorAll(
-          "input:not([type='hidden']), select, textarea"
-        )
-      ).filter(
-        field =>
-          !field.disabled &&
-          field.offsetParent !== null
-      );
-
-    const currentIndex =
-      fields.indexOf(active);
-
-    if (currentIndex === -1) {
-      return;
-    }
-
-    const nextIndex =
-      event.key === "ArrowDown"
-        ? currentIndex + 1
-        : currentIndex - 1;
-
-    if (
-      nextIndex < 0 ||
-      nextIndex >= fields.length
-    ) {
-      return;
-    }
-
-    event.preventDefault();
-
-    fields[nextIndex].focus();
-
+  if (!section) {
+    return;
   }
-);
+
+  const firstField =
+    section.querySelector(
+      "input:not([type='hidden']), select, textarea"
+    );
+
+  if (
+    firstField &&
+    !firstField.disabled &&
+    firstField.offsetParent !== null
+  ) {
+    firstField.focus();
+  }
+}
