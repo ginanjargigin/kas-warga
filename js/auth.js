@@ -1,7 +1,7 @@
 /* =========================================================
    AUTHENTICATION
 ========================================================= */
-
+const DEV_MODE = true;
 
 /* =========================================================
    LOGIN
@@ -123,7 +123,7 @@ function logout() {
 
 function show() {
 
-  if (token) {
+  if (DEV_MODE || token) {
 
     loginView.style.display =
       "none";
