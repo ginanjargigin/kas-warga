@@ -473,59 +473,37 @@ setupPeriodeKas();
  * tampilkan aplikasi dan ambil data.
  */
 
-if (token) {
+if (DEV_MODE || token) {
 
-  const lastActivity =
-    getLastActivity();
+  show();
 
-
-  const inactiveFor =
-    Date.now() -
-    lastActivity;
-
-
-  if (
-    inactiveFor >=
-    AUTO_LOGOUT_MS
-  ) {
-
-    logout();
-
-  } else {
-
-    show();
+  if (!DEV_MODE) {
 
     setupAutoLogout();
 
-    showDataLoading();
-
-
-    load()
-      .then(() => {
-
-        hideDataLoading();
-
-      })
-      .catch(
-        error => {
-
-          console.error(
-            "Gagal memuat data:",
-            error
-          );
-
-
-          showDataLoadingError(
-            error
-          );
-        }
-      );
   }
 
-} else {
+  showDataLoading();
 
-  /*
-   * Belum login.
-   * Tidak perlu menjalankan timer auto logout.
-   */
+  load()
+    .then(() => {
+
+      hideDataLoading();
+
+    })
+    .catch(
+      error => {
+
+        console.error(
+          "Gagal memuat data:",
+          error
+        );
+
+        showDataLoadingError(
+          error
+        );
+
+      }
+    );
+
 }
