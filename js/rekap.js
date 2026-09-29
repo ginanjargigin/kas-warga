@@ -999,23 +999,23 @@ function renderRekapCharts(
 
             },
 
-            scales: {
+           scales: {
 
-              x: {
+  y: {
 
-                beginAtZero: true,
+    beginAtZero: true,
 
-                ticks: {
+    ticks: {
 
-                  callback:
-                    value =>
-                      rp(value)
+      callback:
+        value =>
+          rp(value)
 
-                }
+    }
 
-              }
+  }
 
-            }
+}
 
           }
 
