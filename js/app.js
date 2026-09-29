@@ -132,23 +132,6 @@ function refresh() {
     );
 
 
-  saldo.textContent =
-    rp(
-      pemasukan -
-      pengeluaran
-    );
-
-
-  masuk.textContent =
-    rp(pemasukan);
-
-
-  keluar.textContent =
-    rp(pengeluaran);
-
-
-  jmlWarga.textContent =
-    state.warga.length;
 
 
   /* =========================
