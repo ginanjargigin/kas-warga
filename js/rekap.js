@@ -971,9 +971,7 @@ function renderRekapCharts(
           },
 
           options: {
-
-            indexAxis: "y",
-
+         
             responsive: true,
 
             maintainAspectRatio:
