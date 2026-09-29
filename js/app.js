@@ -490,3 +490,145 @@ if (DEV_MODE || token) {
     );
 
 }
+
+/* =========================================================
+   NAVIGASI FORM DENGAN TOMBOL PANAH
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key !== "ArrowDown" &&
+      event.key !== "ArrowUp"
+    ) {
+      return;
+    }
+
+    const active =
+      document.activeElement;
+
+    if (
+      !active ||
+      !active.matches(
+        "input, select, textarea"
+      )
+    ) {
+      return;
+    }
+
+    const section =
+      active.closest(".section");
+
+    if (!section) {
+      return;
+    }
+
+    const fields =
+      Array.from(
+        section.querySelectorAll(
+          "input:not([type='hidden']), select, textarea"
+        )
+      ).filter(
+        field =>
+          !field.disabled &&
+          field.offsetParent !== null
+      );
+
+    const currentIndex =
+      fields.indexOf(active);
+
+    if (currentIndex === -1) {
+      return;
+    }
+
+    const nextIndex =
+      event.key === "ArrowDown"
+        ? currentIndex + 1
+        : currentIndex - 1;
+
+    if (
+      nextIndex < 0 ||
+      nextIndex >= fields.length
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+
+    fields[nextIndex].focus();
+
+  }
+);
+
+/* =========================================================
+   NAVIGASI FORM DENGAN TOMBOL PANAH
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key !== "ArrowDown" &&
+      event.key !== "ArrowUp"
+    ) {
+      return;
+    }
+
+    const active =
+      document.activeElement;
+
+    if (
+      !active ||
+      !active.matches(
+        "input, select, textarea"
+      )
+    ) {
+      return;
+    }
+
+    const section =
+      active.closest(".section");
+
+    if (!section) {
+      return;
+    }
+
+    const fields =
+      Array.from(
+        section.querySelectorAll(
+          "input:not([type='hidden']), select, textarea"
+        )
+      ).filter(
+        field =>
+          !field.disabled &&
+          field.offsetParent !== null
+      );
+
+    const currentIndex =
+      fields.indexOf(active);
+
+    if (currentIndex === -1) {
+      return;
+    }
+
+    const nextIndex =
+      event.key === "ArrowDown"
+        ? currentIndex + 1
+        : currentIndex - 1;
+
+    if (
+      nextIndex < 0 ||
+      nextIndex >= fields.length
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+
+    fields[nextIndex].focus();
+
+  }
+);
