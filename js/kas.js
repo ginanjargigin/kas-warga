@@ -156,12 +156,9 @@ async function addKas() {
       id:
         uid(),
 
-      tanggal:
-        kTanggal.value ||
-         getTodayLocal(),
-        new Date()
-          .toISOString()
-          .slice(0, 10),
+     tanggal:
+  kTanggal.value ||
+  getTodayLocal(),
 
       nama:
         nama,
