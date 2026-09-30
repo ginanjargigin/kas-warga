@@ -172,6 +172,9 @@ html {
 }
 
 body {
+   overflow-x: hidden;
+
+  -webkit-text-size-adjust: 100%;
   margin: 0;
 
   font-family:
@@ -531,18 +534,20 @@ button.danger:active {
 
 /* =========================================================
    10. NAVIGATION
-   ========================================================= */
+========================================================= */
 
-nav {
+.admin-nav {
+  margin: 0 0 16px;
+}
+
+.nav-menu {
   display: flex;
   flex-wrap: wrap;
 
   gap: 8px;
-
-  margin: 0 0 16px;
 }
 
-nav button {
+.nav-menu button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -559,18 +564,18 @@ nav button {
   font-size: 13px;
 }
 
-nav button svg {
+.nav-menu button svg {
   width: 15px;
   height: 15px;
 
   stroke-width: 2.2;
 }
 
-nav button:hover {
+.nav-menu button:hover {
   background: var(--primary-soft-hover);
 }
 
-nav button.active {
+.nav-menu button.active {
   background: var(--primary);
   color: #ffffff;
 
@@ -578,6 +583,24 @@ nav button.active {
     0 4px 10px var(--card-shadow);
 }
 
+.mobile-nav-toggle {
+  display: none;
+
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.mobile-nav-toggle svg {
+  width: 19px;
+  height: 19px;
+}
 
 /* =========================================================
    11. SECTION
@@ -613,12 +636,15 @@ nav button.active {
 
 
 /* =========================================================
-   13. INPUT & SELECT
+   13. INPUT, SELECT & TEXTAREA
    ========================================================= */
 
 input,
-select {
+select,
+textarea {
   width: 100%;
+  max-width: 100%;
+  min-height: 44px;
 
   margin: 5px 0 10px;
   padding: 11px 12px;
@@ -632,7 +658,12 @@ select {
   color: var(--text);
 
   font-family: inherit;
-  font-size: 14px;
+  font-size: 16px;
+
+  -webkit-appearance: none;
+  appearance: none;
+
+  -webkit-tap-highlight-color: transparent;
 
   transition:
     border-color 0.2s ease,
@@ -641,13 +672,19 @@ select {
     color 0.2s ease;
 }
 
+
+/* Hover */
 input:hover,
-select:hover {
+select:hover,
+textarea:hover {
   border-color: var(--focus);
 }
 
+
+/* Focus */
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
   border-color: var(--focus);
 
   background: var(--focus-bg);
@@ -658,11 +695,40 @@ select:focus {
   outline: none;
 }
 
-input::placeholder {
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
   color: var(--text-placeholder);
 }
 
 
+/* Select */
+select {
+  padding-right: 42px;
+
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent 50%,
+      var(--text) 50%
+    ),
+    linear-gradient(
+      135deg,
+      var(--text) 50%,
+      transparent 50%
+    );
+
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+
+  background-size:
+    6px 6px,
+    6px 6px;
+
+  background-repeat: no-repeat;
+}
 /* =========================================================
    14. TABLE
    ========================================================= */
@@ -1248,19 +1314,47 @@ tbody tr:last-child td {
     padding: 20px 0 40px;
   }
 
-  nav {
-    flex-wrap: nowrap;
+ .admin-nav {
+  margin-bottom: 14px;
+}
 
-    overflow-x: auto;
+.mobile-nav-toggle {
+  display: flex;
+}
 
-    gap: 6px;
+.nav-menu {
+  display: none;
 
-    padding-bottom: 4px;
-  }
+  flex-direction: column;
 
-  nav button {
-    flex: 0 0 auto;
-  }
+  gap: 6px;
+
+  margin-top: 8px;
+
+  padding: 8px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  box-shadow:
+    0 8px 24px var(--card-shadow);
+}
+
+.nav-menu.open {
+  display: flex;
+}
+
+.nav-menu button {
+  width: 100%;
+
+  justify-content: flex-start;
+
+  min-height: 44px;
+
+  padding: 11px 13px;
+}
 
   .formgrid {
     grid-template-columns: 1fr;
@@ -1301,6 +1395,13 @@ tbody tr:last-child td {
   #rekap .rekap-chart-grid {
     grid-template-columns: 1fr;
   }
+   .card {
+    padding: 15px;
+  }
+
+  main {
+    padding-top: 14px;
+  }
 
 }
 
@@ -1335,6 +1436,17 @@ tbody tr:last-child td {
 
   #rekap .chart-wrap {
     height: 240px;
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  header {
+    padding-top:
+      calc(18px + env(safe-area-inset-top));
+
+    padding-bottom: 18px;
   }
 
 }
