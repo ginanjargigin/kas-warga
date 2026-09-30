@@ -850,10 +850,6 @@ tbody tr:last-child td {
    ========================================================= */
 
 #rekap .monthly-summary-card {
-  display: block;
-
-  width: 100%;
-
   margin-bottom: 18px;
 
   padding: 20px;
@@ -932,8 +928,6 @@ tbody tr:last-child td {
     repeat(4, minmax(0, 1fr));
 
   gap: 10px;
-
-  width: 100%;
 }
 
 #rekap .monthly-summary-grid > div {
@@ -963,7 +957,6 @@ tbody tr:last-child td {
   font-size: 17px;
   font-weight: 800;
 }
-
 
 /* =========================================================
    19. REKAP — GRAFIK
