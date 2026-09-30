@@ -674,10 +674,14 @@ textarea {
 
 
 /* Hover */
-input:hover,
-select:hover,
-textarea:hover {
-  border-color: var(--focus);
+@media (hover: hover) and (pointer: fine) {
+
+  input:hover,
+  select:hover,
+  textarea:hover {
+    border-color: var(--focus);
+  }
+
 }
 
 
@@ -687,7 +691,7 @@ select:focus,
 textarea:focus {
   border-color: var(--focus);
 
-  background: var(--focus-bg);
+  background-color: var(--focus-bg);
 
   box-shadow:
     0 0 0 3px var(--focus-ring);
