@@ -144,6 +144,13 @@
       >
         CARI DATA
       </button>
+      <button
+        class="btn2"
+        data-tab="tema"
+      >
+        <i data-lucide="palette"></i>
+        TEMA
+      </button>
 
      
 
@@ -549,6 +556,88 @@
 
     </section>
 
+    <!-- TEMA -->
+
+<section
+  id="tema"
+  class="section"
+>
+
+  <div class="card theme-settings-card">
+
+    <h3>Tema Tampilan</h3>
+
+    <p class="theme-description">
+      Pilih tema tampilan admin. Pilihan disimpan otomatis pada perangkat ini.
+    </p>
+
+    <div class="theme-options">
+
+      <button
+        type="button"
+        class="theme-option active"
+        data-theme-option="blue"
+      >
+        <span class="theme-preview theme-preview-blue"></span>
+
+        <span class="theme-option-content">
+          <strong>
+            <i data-lucide="droplets"></i>
+            Biru
+          </strong>
+
+          <small>
+            Tema utama
+          </small>
+        </span>
+      </button>
+
+
+      <button
+        type="button"
+        class="theme-option"
+        data-theme-option="dark"
+      >
+        <span class="theme-preview theme-preview-dark"></span>
+
+        <span class="theme-option-content">
+          <strong>
+            <i data-lucide="moon"></i>
+            Dark
+          </strong>
+
+          <small>
+            Background gelap dengan focus biru
+          </small>
+        </span>
+      </button>
+
+
+      <button
+        type="button"
+        class="theme-option"
+        data-theme-option="green"
+      >
+        <span class="theme-preview theme-preview-green"></span>
+
+        <span class="theme-option-content">
+          <strong>
+            <i data-lucide="leaf"></i>
+            Hijau
+          </strong>
+
+          <small>
+            Background putih dengan aksen hijau
+          </small>
+        </span>
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
 
     <!-- REKAP -->
 
@@ -771,6 +860,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
 <script src="/js/rekap.js"></script>
 <script src="/js/app.js"></script>
+<script> if (window.lucide) {lucide.createIcons();} </script>
+<script src="https://unpkg.com/lucide@latest"></script>
 
 
 </body>
