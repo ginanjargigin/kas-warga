@@ -970,8 +970,6 @@ tbody tr:last-child td {
 
   gap: 14px;
 
-  width: 100%;
-
   margin-bottom: 18px;
 }
 
@@ -1003,7 +1001,6 @@ tbody tr:last-child td {
   width: 100%;
   height: 280px;
 }
-
 
 /* =========================================================
    20. TEMA
