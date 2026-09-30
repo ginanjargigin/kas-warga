@@ -531,26 +531,26 @@ function setupTheme() {
 
   applyTheme(savedTheme);
 
-  document
-    .querySelectorAll(
-      "[data-theme-option]"
-    )
-    .forEach(button => {
+  document.addEventListener(
+    "click",
+    event => {
 
-      button.addEventListener(
-        "click",
-        () => {
+      const button =
+        event.target.closest(
+          "[data-theme-option]"
+        );
 
-          applyTheme(
-            button.dataset.themeOption
-          );
+      if (!button) {
+        return;
+      }
 
-        }
+      applyTheme(
+        button.dataset.themeOption
       );
 
-    });
+    }
+  );
 }
-
 /* =========================================================
    INISIALISASI
 ========================================================= */
