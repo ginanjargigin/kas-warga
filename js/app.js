@@ -415,6 +415,79 @@ document
     }
   );
 
+/* =========================================================
+   TEMA TAMPILAN
+========================================================= */
+
+const THEME_KEY =
+  "kas_rt_admin_theme";
+
+const AVAILABLE_THEMES = [
+  "blue",
+  "dark",
+  "green"
+];
+
+
+function applyTheme(theme) {
+
+  const selectedTheme =
+    AVAILABLE_THEMES.includes(theme)
+      ? theme
+      : "blue";
+
+  document.body.dataset.theme =
+    selectedTheme;
+
+  localStorage.setItem(
+    THEME_KEY,
+    selectedTheme
+  );
+
+  document
+    .querySelectorAll(
+      "[data-theme-option]"
+    )
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.themeOption ===
+          selectedTheme
+      );
+
+    });
+}
+
+
+function setupTheme() {
+
+  const savedTheme =
+    localStorage.getItem(
+      THEME_KEY
+    ) || "blue";
+
+  applyTheme(savedTheme);
+
+  document
+    .querySelectorAll(
+      "[data-theme-option]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          applyTheme(
+            button.dataset.themeOption
+          );
+
+        }
+      );
+
+    });
+}
 
 /* =========================================================
    INISIALISASI
