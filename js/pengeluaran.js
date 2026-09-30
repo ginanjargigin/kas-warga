@@ -94,11 +94,9 @@ async function addPengeluaran() {
       id:
         uid(),
 
-      tanggal:
-        pTanggal.value ||
-        new Date()
-          .toISOString()
-          .slice(0, 10),
+     tanggal:
+     pTanggal.value ||
+     getTodayLocal(),
 
       kategori:
         pKategori.value.trim(),
