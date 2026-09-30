@@ -1033,8 +1033,6 @@ tbody tr:last-child td {
 
   gap: 12px;
 
-  width: 100%;
-
   padding: 13px;
 
   background: var(--surface);
@@ -1136,7 +1134,6 @@ tbody tr:last-child td {
   line-height: 1.35;
 }
 
-
 /* =========================================================
    21. SCROLLBAR
    ========================================================= */
@@ -1210,9 +1207,9 @@ tbody tr:last-child td {
 
   header {
     padding-top:
-    calc(18px + env(safe-area-inset-top));
+      calc(18px + env(safe-area-inset-top));
 
-  padding-bottom: 18px;
+    padding-bottom: 18px;
   }
 
   .brand {
@@ -1227,47 +1224,46 @@ tbody tr:last-child td {
     padding: 20px 0 40px;
   }
 
- .admin-nav {
-  margin-bottom: 14px;
-}
+  .admin-nav {
+    margin-bottom: 14px;
+  }
 
-.mobile-nav-toggle {
-  display: flex;
-}
+  .mobile-nav-toggle {
+    display: flex;
+  }
 
-.nav-menu {
-  display: none;
+  .nav-menu {
+    display: none;
 
-  flex-direction: column;
+    flex-direction: column;
 
-  gap: 6px;
+    gap: 6px;
 
-  margin-top: 8px;
+    margin-top: 8px;
+    padding: 8px;
 
-  padding: 8px;
+    background: var(--surface);
 
-  background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
 
-  border: 1px solid var(--border);
-  border-radius: 12px;
+    box-shadow:
+      0 8px 24px var(--card-shadow);
+  }
 
-  box-shadow:
-    0 8px 24px var(--card-shadow);
-}
+  .nav-menu.open {
+    display: flex;
+  }
 
-.nav-menu.open {
-  display: flex;
-}
+  .nav-menu button {
+    width: 100%;
 
-.nav-menu button {
-  width: 100%;
+    justify-content: flex-start;
 
-  justify-content: flex-start;
+    min-height: 44px;
 
-  min-height: 44px;
-
-  padding: 11px 13px;
-}
+    padding: 11px 13px;
+  }
 
   .formgrid {
     grid-template-columns: 1fr;
@@ -1282,8 +1278,6 @@ tbody tr:last-child td {
   }
 
 }
-
-
 /* =========================================================
    25. SMALL MOBILE
    ========================================================= */
@@ -1305,10 +1299,7 @@ tbody tr:last-child td {
     min-width: 0;
   }
 
-  #rekap .rekap-chart-grid {
-    grid-template-columns: 1fr;
-  }
-   .card {
+  .card {
     padding: 15px;
   }
 
@@ -1317,7 +1308,6 @@ tbody tr:last-child td {
   }
 
 }
-
 
 @media (max-width: 520px) {
 
@@ -1337,11 +1327,6 @@ tbody tr:last-child td {
     padding: 8px 12px;
   }
 
-  .login {
-    margin: 40px auto;
-    padding: 22px;
-  }
-
   th,
   td {
     padding: 9px 10px;
@@ -1352,4 +1337,3 @@ tbody tr:last-child td {
   }
 
 }
-
