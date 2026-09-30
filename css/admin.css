@@ -2,15 +2,162 @@
    KAS WARGA — ADMIN UI
    File: css/admin.css
 
-   Prinsip:
-   - Satu selector utama untuk satu fungsi
-   - Tidak menggunakan override berlapis
-   - Tidak mengubah struktur HTML / JavaScript
+   Tema:
+   - blue  : tema utama
+   - dark  : background gelap + focus biru
+   - green : background putih + aksen hijau
    ========================================================= */
 
 
 /* =========================================================
-   1. RESET & GLOBAL
+   1. THEME VARIABLES
+   ========================================================= */
+
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+
+  --text: #172033;
+  --text-soft: #475569;
+  --text-muted: #64748b;
+  --text-placeholder: #9aa6b6;
+
+  --border: #e2e8f0;
+  --border-input: #d7deea;
+
+  --primary: #17479e;
+  --primary-hover: #123b82;
+  --primary-soft: #eaf0fa;
+  --primary-soft-hover: #dce6f6;
+  --primary-text: #173b76;
+  --focus: #4d7fca;
+  --focus-ring: rgba(23, 71, 158, 0.10);
+
+  --header: #17479e;
+  --header-shadow: rgba(23, 71, 158, 0.14);
+
+  --card-shadow: rgba(24, 59, 93, 0.06);
+
+  --table-head: #f3f6fa;
+  --table-hover: #f8faff;
+
+  --scroll-track: #edf1f6;
+  --scroll-thumb: #b9c4d3;
+  --scroll-thumb-hover: #8f9daf;
+
+  --success-bg: #dcfce7;
+  --success-border: #bbf7d0;
+  --success-text: #166534;
+
+  --danger-bg: #fee2e2;
+  --danger-border: #fecaca;
+  --danger-text: #b91c1c;
+
+  --info-bg: #dbeafe;
+  --info-border: #bfdbfe;
+  --info-text: #1e40af;
+
+  --loading-bg: rgba(255, 255, 255, 0.92);
+}
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+body[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: #111827;
+  --surface-soft: #172033;
+
+  --text: #e5e7eb;
+  --text-soft: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-placeholder: #64748b;
+
+  --border: #334155;
+  --border-input: #475569;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-soft: #1e293b;
+  --primary-soft-hover: #273449;
+  --primary-text: #bfdbfe;
+  --focus: #60a5fa;
+  --focus-ring: rgba(37, 99, 235, 0.22);
+
+  --header: #0b1220;
+  --header-shadow: rgba(0, 0, 0, 0.30);
+
+  --card-shadow: rgba(0, 0, 0, 0.24);
+
+  --table-head: #1e293b;
+  --table-hover: #172033;
+
+  --scroll-track: #111827;
+  --scroll-thumb: #475569;
+  --scroll-thumb-hover: #64748b;
+
+  --success-bg: #143524;
+  --success-border: #166534;
+  --success-text: #86efac;
+
+  --danger-bg: #3a181b;
+  --danger-border: #991b1b;
+  --danger-text: #fca5a5;
+
+  --info-bg: #172554;
+  --info-border: #1d4ed8;
+  --info-text: #93c5fd;
+
+  --loading-bg: rgba(15, 23, 42, 0.94);
+}
+
+
+/* =========================================================
+   GREEN THEME
+   ========================================================= */
+
+body[data-theme="green"] {
+  --bg: #f5faf7;
+  --surface: #ffffff;
+  --surface-soft: #f7fcf9;
+
+  --text: #17201a;
+  --text-soft: #36513f;
+  --text-muted: #64756a;
+  --text-placeholder: #91a097;
+
+  --border: #dce9df;
+  --border-input: #cbdccf;
+
+  --primary: #15803d;
+  --primary-hover: #166534;
+  --primary-soft: #ecfdf5;
+  --primary-soft-hover: #dcfce7;
+  --primary-text: #166534;
+  --focus: #22a06b;
+  --focus-ring: rgba(21, 128, 61, 0.13);
+
+  --header: #15803d;
+  --header-shadow: rgba(21, 128, 61, 0.16);
+
+  --card-shadow: rgba(22, 101, 52, 0.06);
+
+  --table-head: #f0fdf4;
+  --table-hover: #f7fdf9;
+
+  --scroll-track: #edf5ef;
+  --scroll-thumb: #b7cbbd;
+  --scroll-thumb-hover: #91aa99;
+
+  --loading-bg: rgba(255, 255, 255, 0.94);
+}
+
+
+/* =========================================================
+   2. RESET & GLOBAL
    ========================================================= */
 
 * {
@@ -30,10 +177,14 @@ body {
     Arial,
     sans-serif;
 
-  background: #f5f7fb;
-  color: #172033;
+  background: var(--bg);
+  color: var(--text);
 
   line-height: 1.5;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .wrap {
@@ -43,7 +194,7 @@ body {
 
 
 /* =========================================================
-   2. LOADING DATA
+   3. LOADING DATA
    ========================================================= */
 
 .data-loading-overlay {
@@ -61,7 +212,7 @@ body {
 
   padding: 24px;
 
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--loading-bg);
 
   backdrop-filter: blur(5px);
 
@@ -73,13 +224,13 @@ body {
 
   padding: 32px 26px;
 
-  background: #ffffff;
+  background: var(--surface);
 
-  border: 1px solid #e8edf5;
+  border: 1px solid var(--border);
   border-radius: 18px;
 
   box-shadow:
-    0 20px 60px rgba(15, 61, 145, 0.14);
+    0 20px 60px var(--card-shadow);
 }
 
 .data-loading-spinner {
@@ -88,8 +239,9 @@ body {
 
   margin: 0 auto 18px;
 
-  border: 4px solid #e5eaf2;
-  border-top-color: #17479e;
+  border: 4px solid var(--border);
+  border-top-color: var(--primary);
+
   border-radius: 50%;
 
   animation: dataLoadingSpin 0.8s linear infinite;
@@ -98,7 +250,7 @@ body {
 .data-loading-title {
   margin: 0 0 8px;
 
-  color: #172033;
+  color: var(--text);
 
   font-size: 18px;
   font-weight: 700;
@@ -107,7 +259,7 @@ body {
 .data-loading-text {
   margin: 0;
 
-  color: #68758a;
+  color: var(--text-muted);
 
   font-size: 14px;
   line-height: 1.6;
@@ -119,8 +271,8 @@ body {
 
   border-radius: 10px;
 
-  background: #fef2f2;
-  color: #991b1b;
+  background: var(--danger-bg);
+  color: var(--danger-text);
 
   font-size: 14px;
 }
@@ -132,7 +284,7 @@ body {
   border: 0;
   border-radius: 9px;
 
-  background: #17479e;
+  background: var(--primary);
   color: #ffffff;
 
   font-size: 14px;
@@ -146,7 +298,7 @@ body {
 }
 
 .data-loading-retry:hover {
-  background: #123b82;
+  background: var(--primary-hover);
   transform: translateY(-1px);
 }
 
@@ -158,17 +310,17 @@ body {
 
 
 /* =========================================================
-   3. HEADER
+   4. HEADER
    ========================================================= */
 
 header {
   padding: 22px 0;
 
-  background: #17479e;
+  background: var(--header);
   color: #ffffff;
 
   box-shadow:
-    0 4px 18px rgba(23, 71, 158, 0.14);
+    0 4px 18px var(--header-shadow);
 }
 
 .top {
@@ -195,7 +347,7 @@ header {
 
 
 /* =========================================================
-   4. MAIN
+   5. MAIN
    ========================================================= */
 
 main {
@@ -204,7 +356,7 @@ main {
 
 
 /* =========================================================
-   5. BUTTON
+   6. BUTTON
    ========================================================= */
 
 button {
@@ -221,6 +373,7 @@ button {
   transition:
     background 0.2s ease,
     color 0.2s ease,
+    border-color 0.2s ease,
     transform 0.15s ease,
     box-shadow 0.2s ease;
 }
@@ -230,34 +383,34 @@ button:active {
 }
 
 .btn {
-  background: #17479e;
+  background: var(--primary);
   color: #ffffff;
 
   box-shadow:
-    0 4px 12px rgba(23, 71, 158, 0.16);
+    0 4px 12px var(--card-shadow);
 }
 
 .btn:hover {
-  background: #123b82;
+  background: var(--primary-hover);
 
   box-shadow:
-    0 6px 16px rgba(23, 71, 158, 0.22);
+    0 6px 16px var(--card-shadow);
 }
 
 .btn2 {
-  background: #eaf0fa;
-  color: #173b76;
+  background: var(--primary-soft);
+  color: var(--primary-text);
 }
 
 .btn2:hover {
-  background: #dce6f6;
+  background: var(--primary-soft-hover);
 }
 
 header .btn2 {
   padding: 10px 17px;
 
   background: #ffffff;
-  color: #17479e;
+  color: var(--header);
 
   box-shadow:
     0 3px 10px rgba(0, 0, 0, 0.08);
@@ -268,26 +421,25 @@ header .btn2:hover {
 }
 
 button.danger {
-  background: #fee2e2;
-  color: #b91c1c;
+  background: var(--danger-bg);
+  color: var(--danger-text);
 
-  border: 1px solid #fecaca;
+  border: 1px solid var(--danger-border);
 
   box-shadow: none;
 }
 
 button.danger:hover {
-  background: #fecaca;
-  color: #991b1b;
+  background: var(--danger-border);
 }
 
 button.danger:active {
-  background: #fca5a5;
+  background: var(--danger-border);
 }
 
 
 /* =========================================================
-   6. PUBLIC LINK
+   7. PUBLIC LINK
    ========================================================= */
 
 .public-link {
@@ -300,8 +452,8 @@ button.danger:active {
 
   border-radius: 10px;
 
-  background: #edf2f9;
-  color: #173b76;
+  background: var(--primary-soft);
+  color: var(--primary-text);
 
   text-align: center;
   text-decoration: none;
@@ -315,12 +467,12 @@ button.danger:active {
 }
 
 .public-link:hover {
-  background: #e1e9f5;
+  background: var(--primary-soft-hover);
 }
 
 
 /* =========================================================
-   7. LOGIN
+   8. LOGIN
    ========================================================= */
 
 .login {
@@ -329,19 +481,19 @@ button.danger:active {
   margin: 70px auto;
   padding: 28px;
 
-  background: #ffffff;
+  background: var(--surface);
 
-  border: 1px solid #e6ebf2;
+  border: 1px solid var(--border);
   border-radius: 18px;
 
   box-shadow:
-    0 12px 35px rgba(24, 59, 93, 0.10);
+    0 12px 35px var(--card-shadow);
 }
 
 .login h2 {
   margin: 0 0 4px;
 
-  color: #173f88;
+  color: var(--primary-text);
 
   font-size: 24px;
   letter-spacing: -0.4px;
@@ -349,33 +501,33 @@ button.danger:active {
 
 
 /* =========================================================
-   8. CARD
+   9. CARD
    ========================================================= */
 
 .card {
   padding: 20px;
 
-  background: #ffffff;
+  background: var(--surface);
 
-  border: 1px solid #e6ebf2;
+  border: 1px solid var(--border);
   border-radius: 16px;
 
   box-shadow:
-    0 7px 24px rgba(24, 59, 93, 0.06);
+    0 7px 24px var(--card-shadow);
 }
 
 .card h3 {
   margin-top: 0;
   margin-bottom: 18px;
 
-  color: #172033;
+  color: var(--text);
 
   font-size: 17px;
 }
 
 
 /* =========================================================
-   9. NAVIGATION
+   10. NAVIGATION
    ========================================================= */
 
 nav {
@@ -388,31 +540,44 @@ nav {
 }
 
 nav button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
   padding: 9px 14px;
 
   border-radius: 10px;
 
-  background: #eaf0f8;
-  color: #183966;
+  background: var(--primary-soft);
+  color: var(--primary-text);
 
   font-size: 13px;
 }
 
+nav button svg {
+  width: 15px;
+  height: 15px;
+
+  stroke-width: 2.2;
+}
+
 nav button:hover {
-  background: #dce6f4;
+  background: var(--primary-soft-hover);
 }
 
 nav button.active {
-  background: #17479e;
+  background: var(--primary);
   color: #ffffff;
 
   box-shadow:
-    0 4px 10px rgba(23, 71, 158, 0.16);
+    0 4px 10px var(--card-shadow);
 }
 
 
 /* =========================================================
-   10. SECTION
+   11. SECTION
    ========================================================= */
 
 .section {
@@ -423,12 +588,12 @@ nav button.active {
   display: block;
 
   background: transparent;
-  color: #172033;
+  color: var(--text);
 }
 
 
 /* =========================================================
-   11. FORM
+   12. FORM
    ========================================================= */
 
 .formgrid {
@@ -445,7 +610,7 @@ nav button.active {
 
 
 /* =========================================================
-   12. INPUT & SELECT
+   13. INPUT & SELECT
    ========================================================= */
 
 input,
@@ -455,13 +620,13 @@ select {
   margin: 5px 0 10px;
   padding: 11px 12px;
 
-  border: 1px solid #d7deea;
+  border: 1px solid var(--border-input);
   border-radius: 10px;
 
   outline: none;
 
-  background: #ffffff;
-  color: #172033;
+  background: var(--surface);
+  color: var(--text);
 
   font-family: inherit;
   font-size: 14px;
@@ -469,31 +634,32 @@ select {
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
-    background 0.2s ease;
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 input:hover,
 select:hover {
-  border-color: #b9c6d9;
+  border-color: var(--focus);
 }
 
 input:focus,
 select:focus {
-  border-color: #4d7fca;
+  border-color: var(--focus);
 
-  background: #ffffff;
+  background: var(--surface);
 
   box-shadow:
-    0 0 0 3px rgba(23, 71, 158, 0.10);
+    0 0 0 3px var(--focus-ring);
 }
 
 input::placeholder {
-  color: #9aa6b6;
+  color: var(--text-placeholder);
 }
 
 
 /* =========================================================
-   13. TABLE
+   14. TABLE
    ========================================================= */
 
 .tablewrap {
@@ -507,7 +673,7 @@ table {
 
   border-collapse: collapse;
 
-  background: #ffffff;
+  background: var(--surface);
 
   font-size: 13px;
 }
@@ -516,7 +682,7 @@ th,
 td {
   padding: 11px 12px;
 
-  border-bottom: 1px solid #e8edf3;
+  border-bottom: 1px solid var(--border);
 
   text-align: left;
 
@@ -524,8 +690,8 @@ td {
 }
 
 th {
-  background: #f3f6fa;
-  color: #34445d;
+  background: var(--table-head);
+  color: var(--text-soft);
 
   font-size: 12px;
   font-weight: 800;
@@ -539,7 +705,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background: #f8faff;
+  background: var(--table-hover);
 }
 
 tbody tr:last-child td {
@@ -548,7 +714,7 @@ tbody tr:last-child td {
 
 
 /* =========================================================
-   14. MESSAGE
+   15. MESSAGE
    ========================================================= */
 
 .err {
@@ -557,27 +723,6 @@ tbody tr:last-child td {
 
 .ok {
   color: #18794e;
-}
-
-
-
-
-/* Warga */
-
-#home .grid > .stat:not(
-  .saldo-card,
-  .pemasukan-card,
-  .pengeluaran-card
-) {
-  background: #ffffff;
-}
-
-#home .grid > .stat:not(
-  .saldo-card,
-  .pemasukan-card,
-  .pengeluaran-card
-) b {
-  color: #111827;
 }
 
 
@@ -606,7 +751,7 @@ tbody tr:last-child td {
   border-radius: 16px;
 
   box-shadow:
-    0 8px 22px rgba(15, 23, 42, 0.06);
+    0 8px 22px var(--card-shadow);
 }
 
 #rekap .rekap-summary-card span {
@@ -614,7 +759,7 @@ tbody tr:last-child td {
 
   margin-bottom: 7px;
 
-  color: #475569;
+  color: var(--text-soft);
 
   font-size: 13px;
 }
@@ -628,40 +773,31 @@ tbody tr:last-child td {
   line-height: 1.2;
 }
 
-
-/* Pemasukan */
-
 #rekap .rekap-summary-card.pemasukan {
-  background: #dcfce7;
-  border-color: #bbf7d0;
+  background: var(--success-bg);
+  border-color: var(--success-border);
 }
 
 #rekap .rekap-summary-card.pemasukan b {
-  color: #166534;
+  color: var(--success-text);
 }
 
-
-/* Pengeluaran */
-
 #rekap .rekap-summary-card.pengeluaran {
-  background: #fee2e2;
-  border-color: #fecaca;
+  background: var(--danger-bg);
+  border-color: var(--danger-border);
 }
 
 #rekap .rekap-summary-card.pengeluaran b {
-  color: #b91c1c;
+  color: var(--danger-text);
 }
 
-
-/* Sisa kas */
-
 #rekap .rekap-summary-card.saldo {
-  background: #dbeafe;
-  border-color: #bfdbfe;
+  background: var(--info-bg);
+  border-color: var(--info-border);
 }
 
 #rekap .rekap-summary-card.saldo b {
-  color: #1e40af;
+  color: var(--info-text);
 }
 
 
@@ -687,13 +823,13 @@ tbody tr:last-child td {
 
   padding: 17px 18px;
 
-  background: #ffffff;
+  background: var(--surface);
 
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   border-radius: 14px;
 
   box-shadow:
-    0 6px 18px rgba(15, 23, 42, 0.05);
+    0 6px 18px var(--card-shadow);
 }
 
 #rekap .insight-card span {
@@ -701,7 +837,7 @@ tbody tr:last-child td {
 
   margin-bottom: 6px;
 
-  color: #64748b;
+  color: var(--text-muted);
 
   font-size: 13px;
 }
@@ -709,7 +845,7 @@ tbody tr:last-child td {
 #rekap .insight-card b {
   display: block;
 
-  color: #173f88;
+  color: var(--primary-text);
 
   font-size: 21px;
   font-weight: 800;
@@ -731,13 +867,13 @@ tbody tr:last-child td {
 
   padding: 20px;
 
-  background: #f8fafc;
+  background: var(--surface-soft);
 
-  border: 1px solid #dbe5f1;
+  border: 1px solid var(--border);
   border-radius: 16px;
 
   box-shadow:
-    0 7px 20px rgba(15, 23, 42, 0.05);
+    0 7px 20px var(--card-shadow);
 }
 
 #rekap .monthly-summary-header {
@@ -758,7 +894,7 @@ tbody tr:last-child td {
 #rekap .monthly-summary-header p {
   margin: 0;
 
-  color: #64748b;
+  color: var(--text-muted);
 
   font-size: 13px;
 }
@@ -766,7 +902,7 @@ tbody tr:last-child td {
 #rekap .monthly-summary-header .monthly-period {
   margin-top: 2px;
 
-  color: #94a3b8;
+  color: var(--text-muted);
 
   font-size: 12px;
 }
@@ -776,9 +912,9 @@ tbody tr:last-child td {
 
   padding: 11px 14px;
 
-  background: #eff6ff;
+  background: var(--primary-soft);
 
-  border: 1px solid #dbeafe;
+  border: 1px solid var(--border);
   border-radius: 10px;
 }
 
@@ -787,13 +923,13 @@ tbody tr:last-child td {
 
   margin-bottom: 3px;
 
-  color: #64748b;
+  color: var(--text-muted);
 
   font-size: 12px;
 }
 
 #rekap .monthly-highlight b {
-  color: #17479e;
+  color: var(--primary);
 
   font-size: 14px;
 }
@@ -814,9 +950,9 @@ tbody tr:last-child td {
 
   padding: 13px 14px;
 
-  background: #ffffff;
+  background: var(--surface);
 
-  border: 1px solid #e6ebf2;
+  border: 1px solid var(--border);
   border-radius: 10px;
 }
 
@@ -825,13 +961,13 @@ tbody tr:last-child td {
 
   margin-bottom: 4px;
 
-  color: #64748b;
+  color: var(--text-muted);
 
   font-size: 12px;
 }
 
 #rekap .monthly-summary-grid b {
-  color: #173f88;
+  color: var(--primary-text);
 
   font-size: 17px;
   font-weight: 800;
@@ -860,7 +996,7 @@ tbody tr:last-child td {
 
   width: 100%;
 
-  background: #ffffff;
+  background: var(--surface);
 
   border-radius: 16px;
 }
@@ -872,7 +1008,7 @@ tbody tr:last-child td {
 #rekap .chart-subtitle {
   margin: 0 0 14px;
 
-  color: #64748b;
+  color: var(--text-muted);
 
   font-size: 13px;
 }
@@ -886,15 +1022,137 @@ tbody tr:last-child td {
 
 
 /* =========================================================
-   20. REKAP — TABEL
+   20. TEMA
    ========================================================= */
 
-#rekap .tablewrap {
+.theme-settings-card {
   width: 100%;
 }
 
-#rekap .tablewrap table {
+.theme-description {
+  margin: -8px 0 18px;
+
+  color: var(--text-muted);
+
+  font-size: 14px;
+}
+
+.theme-options {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
   width: 100%;
+
+  padding: 13px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  color: var(--text);
+
+  text-align: left;
+
+  box-shadow: none;
+}
+
+.theme-option:hover {
+  border-color: var(--focus);
+
+  background: var(--surface-soft);
+}
+
+.theme-option.active {
+  border-color: var(--primary);
+
+  background: var(--primary-soft);
+
+  box-shadow:
+    0 0 0 2px var(--focus-ring);
+}
+
+.theme-preview {
+  flex: 0 0 auto;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 10px;
+
+  border: 1px solid var(--border);
+}
+
+.theme-preview-blue {
+  background:
+    linear-gradient(
+      135deg,
+      #17479e 0 50%,
+      #f5f7fb 50% 100%
+    );
+}
+
+.theme-preview-dark {
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a 0 50%,
+      #2563eb 50% 100%
+    );
+}
+
+.theme-preview-green {
+  background:
+    linear-gradient(
+      135deg,
+      #15803d 0 50%,
+      #ffffff 50% 100%
+    );
+}
+
+.theme-option-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.theme-option-content strong {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  color: var(--text);
+
+  font-size: 14px;
+}
+
+.theme-option-content strong svg {
+  width: 15px;
+  height: 15px;
+}
+
+.theme-option-content small {
+  color: var(--text-muted);
+
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1.35;
 }
 
 
@@ -908,17 +1166,17 @@ tbody tr:last-child td {
 }
 
 ::-webkit-scrollbar-track {
-  background: #edf1f6;
+  background: var(--scroll-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #b9c4d3;
+  background: var(--scroll-thumb);
 
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8f9daf;
+  background: var(--scroll-thumb-hover);
 }
 
 
@@ -927,8 +1185,8 @@ tbody tr:last-child td {
    ========================================================= */
 
 ::selection {
-  background: rgba(23, 71, 158, 0.18);
-  color: #172033;
+  background: var(--focus-ring);
+  color: var(--text);
 }
 
 
@@ -937,11 +1195,6 @@ tbody tr:last-child td {
    ========================================================= */
 
 @media (max-width: 900px) {
-
-  #home .grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
 
   #rekap .rekap-insight-grid {
     grid-template-columns:
@@ -954,6 +1207,10 @@ tbody tr:last-child td {
   }
 
   #rekap .rekap-chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-options {
     grid-template-columns: 1fr;
   }
 
@@ -1016,7 +1273,7 @@ tbody tr:last-child td {
 
 
 /* =========================================================
-   25. RESPONSIVE — SMALL MOBILE
+   25. SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 650px) {
@@ -1059,18 +1316,6 @@ tbody tr:last-child td {
 
   header .btn2 {
     padding: 8px 12px;
-  }
-
-  #home .grid {
-    grid-template-columns: 1fr;
-  }
-
-  #home .stat {
-    min-height: 78px;
-  }
-
-  #home .stat b {
-    font-size: 23px;
   }
 
   .login {
