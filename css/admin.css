@@ -869,59 +869,39 @@ tbody tr:last-child td {
 }
 
 
-/* =========================================================
-   17. REKAP — INSIGHT
-   ========================================================= */
-
 #rekap .rekap-insight-grid {
   display: grid;
-
   grid-template-columns:
     repeat(4, minmax(0, 1fr));
-
   gap: 14px;
-
   width: 100%;
-
   margin-bottom: 18px;
 }
 
 #rekap .insight-card {
   min-width: 0;
-
   padding: 17px 18px;
-
   background: var(--surface);
-
   border: 1px solid var(--border);
   border-radius: 14px;
-
   box-shadow:
     0 6px 18px var(--card-shadow);
 }
 
 #rekap .insight-card span {
   display: block;
-
   margin-bottom: 6px;
-
   color: var(--text-muted);
-
   font-size: 13px;
 }
 
 #rekap .insight-card b {
   display: block;
-
   color: var(--primary-text);
-
   font-size: 21px;
   font-weight: 800;
-
   line-height: 1.25;
 }
-
-
 /* =========================================================
    18. REKAP — RINGKASAN BULANAN
    ========================================================= */
