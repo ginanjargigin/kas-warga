@@ -634,7 +634,6 @@ button.danger:active {
   grid-column: 1 / -1;
 }
 
-
 /* =========================================================
    13. INPUT, SELECT & TEXTAREA
    ========================================================= */
@@ -643,7 +642,6 @@ input,
 select,
 textarea {
   width: 100%;
-  max-width: 100%;
   min-height: 44px;
 
   margin: 5px 0 10px;
@@ -652,16 +650,11 @@ textarea {
   border: 1px solid var(--border-input);
   border-radius: 10px;
 
-  outline: none;
-
   background: var(--surface);
   color: var(--text);
 
   font-family: inherit;
   font-size: 16px;
-
-  -webkit-appearance: none;
-  appearance: none;
 
   -webkit-tap-highlight-color: transparent;
 
@@ -690,7 +683,6 @@ input:focus,
 select:focus,
 textarea:focus {
   border-color: var(--focus);
-
   background-color: var(--focus-bg);
 
   box-shadow:
@@ -710,6 +702,9 @@ textarea::placeholder {
 /* Select */
 select {
   padding-right: 42px;
+
+  -webkit-appearance: none;
+  appearance: none;
 
   background-image:
     linear-gradient(
