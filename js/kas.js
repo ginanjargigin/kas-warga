@@ -75,7 +75,7 @@ async function addKas() {
   try {
 
     const kas =
-      Number(kKas.value) || 0;
+  getNominalValue(kKas.value);
 
     const denda =
       Number(kDenda.value) || 0;
@@ -158,6 +158,7 @@ async function addKas() {
 
       tanggal:
         kTanggal.value ||
+         getTodayLocal(),
         new Date()
           .toISOString()
           .slice(0, 10),
