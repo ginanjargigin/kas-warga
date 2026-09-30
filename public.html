@@ -13,11 +13,13 @@
   <title>
     Transparansi Kas Gang RT 027
   </title>
-  
+
 <style>
-  /* =========================================================
+
+/* =========================================================
    TRANSPARANSI KAS WARGA
-   ========================================================= */
+   TEMA HIJAU
+========================================================= */
 
 * {
   box-sizing: border-box;
@@ -46,7 +48,7 @@ body {
 
 /* =========================================================
    CONTAINER
-   ========================================================= */
+========================================================= */
 
 .wrap {
   width: min(1100px, calc(100% - 32px));
@@ -57,17 +59,17 @@ body {
 
 /* =========================================================
    HEADER
-   ========================================================= */
+========================================================= */
 
 header {
-  background: #17479e;
+  background: #15803d;
 
   color: #ffffff;
 
   padding: 25px 0;
 
   box-shadow:
-    0 4px 18px rgba(23, 71, 158, 0.14);
+    0 4px 18px rgba(21, 128, 61, 0.14);
 }
 
 .header-title {
@@ -91,7 +93,7 @@ header {
 
 /* =========================================================
    MAIN
-   ========================================================= */
+========================================================= */
 
 main {
   padding: 28px 0 45px;
@@ -100,7 +102,7 @@ main {
 
 /* =========================================================
    TOOLBAR
-   ========================================================= */
+========================================================= */
 
 .toolbar {
   display: flex;
@@ -125,7 +127,7 @@ main {
 
 /* =========================================================
    BUTTON
-   ========================================================= */
+========================================================= */
 
 button,
 .back-btn {
@@ -155,16 +157,18 @@ button:active,
 }
 
 
-/* Kembali */
+/* =========================================================
+   KEMBALI
+========================================================= */
 
 .back-btn {
   display: inline-block;
 
   text-decoration: none;
 
-  background: #eaf0f8;
+  background: #ecfdf5;
 
-  color: #173b76;
+  color: #166534;
 
   margin-right: 8px;
 
@@ -173,32 +177,34 @@ button:active,
 }
 
 .back-btn:hover {
-  background: #dce6f4;
+  background: #dcfce7;
 }
 
 
-/* Refresh */
+/* =========================================================
+   REFRESH
+========================================================= */
 
 .refresh-btn {
-  background: #1769d1;
+  background: #15803d;
 
   color: #ffffff;
 
   box-shadow:
-    0 4px 12px rgba(23, 105, 209, 0.18);
+    0 4px 12px rgba(21, 128, 61, 0.18);
 }
 
 .refresh-btn:hover {
-  background: #0f57b7;
+  background: #166534;
 
   box-shadow:
-    0 6px 16px rgba(23, 105, 209, 0.22);
+    0 6px 16px rgba(21, 128, 61, 0.22);
 }
 
 
 /* =========================================================
    SUMMARY GRID
-   ========================================================= */
+========================================================= */
 
 .grid {
   display: grid;
@@ -214,7 +220,7 @@ button:active,
 
 /* =========================================================
    CARD
-   ========================================================= */
+========================================================= */
 
 .card {
   background: #ffffff;
@@ -232,7 +238,7 @@ button:active,
 
 /* =========================================================
    SUMMARY CARD
-   ========================================================= */
+========================================================= */
 
 .stat-title {
   color: #64748b;
@@ -283,13 +289,13 @@ button:active,
 /* Saldo */
 
 #saldo {
-  color: #173f88;
+  color: #166534;
 }
 
 
 /* =========================================================
    SECTION TITLE
-   ========================================================= */
+========================================================= */
 
 .section-title {
   margin: 0 0 16px;
@@ -306,7 +312,7 @@ button:active,
 
 /* =========================================================
    TABLE
-   ========================================================= */
+========================================================= */
 
 .tablewrap {
   width: 100%;
@@ -338,7 +344,7 @@ td {
 }
 
 th {
-  background: #f3f6fa;
+  background: #f0fdf4;
 
   color: #34445d;
 
@@ -357,7 +363,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background: #f8faff;
+  background: #f7fdf9;
 }
 
 tbody tr:last-child td {
@@ -367,7 +373,7 @@ tbody tr:last-child td {
 
 /* =========================================================
    AMOUNT
-   ========================================================= */
+========================================================= */
 
 .amount {
   font-weight: 800;
@@ -384,7 +390,7 @@ tbody tr:last-child td {
 
 /* =========================================================
    LOADING
-   ========================================================= */
+========================================================= */
 
 .loading {
   text-align: center;
@@ -399,7 +405,7 @@ tbody tr:last-child td {
 
 /* =========================================================
    EMPTY
-   ========================================================= */
+========================================================= */
 
 .empty {
   padding: 20px;
@@ -414,7 +420,7 @@ tbody tr:last-child td {
 
 /* =========================================================
    ERROR
-   ========================================================= */
+========================================================= */
 
 .error {
   display: none;
@@ -438,21 +444,21 @@ tbody tr:last-child td {
 
 
 /* =========================================================
-   NOTE
-   ========================================================= */
+   CATATAN TRANSPARANSI
+========================================================= */
 
 .note {
   margin-top: 20px;
 
   padding: 14px 16px;
 
-  background: #eef4ff;
+  background: #ecfdf5;
 
-  border: 1px solid #dbe7fb;
+  border: 1px solid #bbf7d0;
 
   border-radius: 10px;
 
-  color: #475569;
+  color: #166534;
 
   font-size: 13px;
 
@@ -462,7 +468,7 @@ tbody tr:last-child td {
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 footer {
   text-align: center;
@@ -477,7 +483,7 @@ footer {
 
 /* =========================================================
    SCROLLBAR
-   ========================================================= */
+========================================================= */
 
 ::-webkit-scrollbar {
   width: 9px;
@@ -496,13 +502,13 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8f9daf;
+  background: #6b8f78;
 }
 
 
 /* =========================================================
    RESPONSIVE — TABLET
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 800px) {
 
@@ -516,7 +522,7 @@ footer {
 
 /* =========================================================
    RESPONSIVE — MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 520px) {
 
@@ -575,9 +581,10 @@ footer {
 
 }
 
-  /* =========================================================
+
+/* =========================================================
    DIAGRAM KEUANGAN
-   ========================================================= */
+========================================================= */
 
 .chart-grid {
   display: grid;
@@ -596,6 +603,7 @@ footer {
 
 .chart-subtitle {
   margin-top: -9px;
+
   margin-bottom: 14px;
 
   color: #64748b;
@@ -615,13 +623,14 @@ footer {
   display: block;
 
   width: 100% !important;
+
   height: 100% !important;
 }
 
 
 /* =========================================================
    RESPONSIVE DIAGRAM
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 800px) {
 
@@ -640,8 +649,8 @@ footer {
 
 }
 
- </style>
-  
+</style>
+
 </head>
 
 <body>
@@ -680,43 +689,36 @@ footer {
       <!-- =========================
            TOOLBAR
       ========================== -->
-<div class="toolbar">
 
-  <div
-    id="status"
-    class="status"
-  >
-    Memuat data...
-  </div>
+      <div class="toolbar">
 
-  <div>
-    
-    <a
-      href="/"
-      class="back-btn"
-      style="
-        display: inline-block;
-        text-decoration: none;
-        border-radius: 9px;
-        padding: 10px 16px;
-        font-weight: 700;
-        margin-right: 8px;
-      "
-    >
-      Kembali ke Halaman Utama
-    </a>
+        <div
+          id="status"
+          class="status"
+        >
+          Memuat data...
+        </div>
 
-    <button
-      type="button"
-      class="refresh-btn"
-      onclick="loadPublicData(true)"
-    >
-      ↻ Perbarui Data
-    </button>
+        <div>
 
-  </div>
+          <a
+            href="/"
+            class="back-btn"
+          >
+            Kembali ke Halaman Utama
+          </a>
 
-</div>
+          <button
+            type="button"
+            class="refresh-btn"
+            onclick="loadPublicData(true)"
+          >
+            ↻ Perbarui Data
+          </button>
+
+        </div>
+
+      </div>
 
 
       <!-- =========================
@@ -800,46 +802,56 @@ footer {
 
       </div>
 
-  <!-- =========================
-     DIAGRAM KEUANGAN
-========================== -->
 
-<div class="chart-grid">
+      <!-- =========================
+           DIAGRAM KEUANGAN
+      ========================== -->
 
-  <div class="card chart-card">
+      <div class="chart-grid">
 
-    <h2 class="section-title">
-      Arus Kas Bulanan
-    </h2>
+        <div class="card chart-card">
 
-    <div class="chart-subtitle">
-      Perbandingan pemasukan dan pengeluaran
-    </div>
+          <h2 class="section-title">
+            Arus Kas Bulanan
+          </h2>
 
-    <div class="chart-wrap">
-      <canvas id="cashFlowChart"></canvas>
-    </div>
+          <div class="chart-subtitle">
+            Perbandingan pemasukan dan pengeluaran
+          </div>
 
-  </div>
+          <div class="chart-wrap">
+
+            <canvas
+              id="cashFlowChart"
+            ></canvas>
+
+          </div>
+
+        </div>
 
 
-  <div class="card chart-card">
+        <div class="card chart-card">
 
-    <h2 class="section-title">
-      Tren Saldo Kas
-    </h2>
+          <h2 class="section-title">
+            Tren Saldo Kas
+          </h2>
 
-    <div class="chart-subtitle">
-      Perubahan saldo berdasarkan transaksi
-    </div>
+          <div class="chart-subtitle">
+            Perubahan saldo berdasarkan transaksi
+          </div>
 
-    <div class="chart-wrap">
-      <canvas id="balanceChart"></canvas>
-    </div>
+          <div class="chart-wrap">
 
-  </div>
+            <canvas
+              id="balanceChart"
+            ></canvas>
 
-</div>
+          </div>
+
+        </div>
+
+      </div>
+
 
       <!-- =========================
            PEMASUKAN
@@ -882,7 +894,9 @@ footer {
 
             </thead>
 
-            <tbody id="kasTable"></tbody>
+            <tbody
+              id="kasTable"
+            ></tbody>
 
           </table>
 
@@ -988,8 +1002,10 @@ footer {
     KAS WARGA
 
   </footer>
-  
+
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
   <!-- =========================
        JAVASCRIPT
@@ -997,9 +1013,9 @@ footer {
 
   <script>
 
-    /* =========================
+    /* =====================================================
        FORMAT RUPIAH
-    ========================== */
+    ===================================================== */
 
     const rupiahFormatter =
       new Intl.NumberFormat(
@@ -1021,9 +1037,9 @@ footer {
     }
 
 
-    /* =========================
+    /* =====================================================
        ESCAPE HTML
-    ========================== */
+    ===================================================== */
 
     function esc(value) {
 
@@ -1054,705 +1070,737 @@ footer {
     }
 
 
-  /* =========================
-   FORMAT TANGGAL
-========================= */
+    /* =====================================================
+       FORMAT TANGGAL
+    ===================================================== */
 
-function formatTanggal(
-  value
-) {
+    function formatTanggal(
+      value
+    ) {
 
-  if (!value) {
-    return "-";
-  }
+      if (!value) {
+        return "-";
+      }
 
-  const parts =
-    String(value).split("-");
+      const parts =
+        String(value).split("-");
 
-  if (parts.length !== 3) {
-    return esc(value);
-  }
+      if (parts.length !== 3) {
+        return esc(value);
+      }
 
-  const bulan = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "Mei",
-    "Jun",
-    "Jul",
-    "Agu",
-    "Sep",
-    "Okt",
-    "Nov",
-    "Des"
-  ];
+      const bulan = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Agu",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des"
+      ];
 
-  const tahun =
-    parts[0];
+      const tahun =
+        parts[0];
 
-  const nomorBulan =
-    Number(parts[1]);
+      const nomorBulan =
+        Number(parts[1]);
 
-  const hari =
-    parts[2];
+      const hari =
+        parts[2];
 
-  if (
-    nomorBulan < 1 ||
-    nomorBulan > 12
-  ) {
-    return esc(value);
-  }
+      if (
+        nomorBulan < 1 ||
+        nomorBulan > 12
+      ) {
+        return esc(value);
+      }
 
-  return (
-    hari +
-    " " +
-    bulan[nomorBulan - 1] +
-    " " +
-    tahun
-  );
-
-}
-    /* =========================
-   DIAGRAM KEUANGAN
-========================== */
-
-let cashFlowChart = null;
-let balanceChart = null;
-
-
-/* =========================
-   FORMAT BULAN
-========================== */
-
-function formatBulan(value) {
-
-  if (!value) {
-    return "-";
-  }
-
-  const parts =
-    String(value).split("-");
-
-  if (parts.length !== 2) {
-    return value;
-  }
-
-  const bulan = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "Mei",
-    "Jun",
-    "Jul",
-    "Agu",
-    "Sep",
-    "Okt",
-    "Nov",
-    "Des"
-  ];
-
-  const nomor =
-    Number(parts[1]);
-
-  if (
-    nomor < 1 ||
-    nomor > 12
-  ) {
-    return value;
-  }
-
-  return (
-    bulan[nomor - 1] +
-    " " +
-    parts[0]
-  );
-}
-
-
-/* =========================
-   RENDER DIAGRAM
-========================== */
-
-function renderCharts(
-  kasRows,
-  pengeluaranRows
-) {
-
-  if (
-    typeof Chart === "undefined"
-  ) {
-    return;
-  }
-
-
-  /* =========================
-     GABUNGKAN DATA BULANAN
-  ========================== */
-
-  const monthly = {};
-
-
-  kasRows.forEach(item => {
-
-    const tanggal =
-      String(
-        item.tanggal || ""
+      return (
+        hari +
+        " " +
+        bulan[nomorBulan - 1] +
+        " " +
+        tahun
       );
 
-    const bulan =
-      tanggal.substring(0, 7);
-
-    if (!bulan) {
-      return;
     }
 
-    if (!monthly[bulan]) {
 
-      monthly[bulan] = {
-        pemasukan: 0,
-        pengeluaran: 0
-      };
+    /* =====================================================
+       DIAGRAM KEUANGAN
+    ===================================================== */
 
-    }
+    let cashFlowChart = null;
 
-    monthly[bulan].pemasukan +=
-      Number(item.jumlah || 0);
-
-  });
+    let balanceChart = null;
 
 
-  pengeluaranRows.forEach(item => {
+    /* =====================================================
+       FORMAT BULAN
+    ===================================================== */
 
-    const tanggal =
-      String(
-        item.tanggal || ""
+    function formatBulan(
+      value
+    ) {
+
+      if (!value) {
+        return "-";
+      }
+
+      const parts =
+        String(value).split("-");
+
+      if (parts.length !== 2) {
+        return value;
+      }
+
+      const bulan = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Agu",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des"
+      ];
+
+      const nomor =
+        Number(parts[1]);
+
+      if (
+        nomor < 1 ||
+        nomor > 12
+      ) {
+        return value;
+      }
+
+      return (
+        bulan[nomor - 1] +
+        " " +
+        parts[0]
       );
 
-    const bulan =
-      tanggal.substring(0, 7);
-
-    if (!bulan) {
-      return;
     }
 
-    if (!monthly[bulan]) {
 
-      monthly[bulan] = {
-        pemasukan: 0,
-        pengeluaran: 0
-      };
+    /* =====================================================
+       RENDER DIAGRAM
+    ===================================================== */
 
-    }
+    function renderCharts(
+      kasRows,
+      pengeluaranRows
+    ) {
 
-    monthly[bulan].pengeluaran +=
-      Number(item.jumlah || 0);
-
-  });
-
-
-  const months =
-    Object.keys(monthly)
-      .sort();
+      if (
+        typeof Chart === "undefined"
+      ) {
+        return;
+      }
 
 
-  const labels =
-    months.map(formatBulan);
+      /* ===================================================
+         GABUNGKAN DATA BULANAN
+      =================================================== */
+
+      const monthly = {};
 
 
-  const pemasukan =
-    months.map(
-      month =>
-        monthly[month].pemasukan
-    );
+      kasRows.forEach(
+        item => {
 
+          const tanggal =
+            String(
+              item.tanggal || ""
+            );
 
-  const pengeluaran =
-    months.map(
-      month =>
-        monthly[month].pengeluaran
-    );
+          const bulan =
+            tanggal.substring(0, 7);
 
+          if (!bulan) {
+            return;
+          }
 
-  /* =========================
-     DIAGRAM ARUS KAS
-  ========================== */
+          if (!monthly[bulan]) {
 
-  const cashFlowCanvas =
-    document.getElementById(
-      "cashFlowChart"
-    );
-
-  if (!cashFlowCanvas) {
-    return;
-  }
-
-
-  if (cashFlowChart) {
-    cashFlowChart.destroy();
-  }
-
-
-  cashFlowChart =
-    new Chart(
-      cashFlowCanvas,
-      {
-        type: "bar",
-
-        data: {
-
-          labels: labels,
-
-          datasets: [
-
-            {
-              label: "Pemasukan",
-
-              data: pemasukan,
-
-              backgroundColor:
-                "#22c55e",
-
-              borderRadius: 6
-            },
-
-            {
-              label: "Pengeluaran",
-
-              data: pengeluaran,
-
-              backgroundColor:
-                "#ef4444",
-
-              borderRadius: 6
-            }
-
-          ]
-
-        },
-
-        options: {
-
-          responsive: true,
-
-          maintainAspectRatio: false,
-
-          interaction: {
-            mode: "index",
-            intersect: false
-          },
-
-          plugins: {
-
-            legend: {
-              position: "top",
-
-              labels: {
-                usePointStyle: true,
-
-                padding: 16
-              }
-            },
-
-            tooltip: {
-
-              callbacks: {
-
-                label: function(context) {
-
-                  return (
-                    context.dataset.label +
-                    ": " +
-                    rupiah(
-                      context.raw
-                    )
-                  );
-
-                }
-
-              }
-
-            }
-
-          },
-
-          scales: {
-
-            y: {
-
-              beginAtZero: true,
-
-              ticks: {
-
-                callback: function(value) {
-
-                  return rupiah(
-                    value
-                  );
-
-                }
-
-              }
-
-            }
+            monthly[bulan] = {
+              pemasukan: 0,
+              pengeluaran: 0
+            };
 
           }
 
+          monthly[bulan].pemasukan +=
+            Number(
+              item.jumlah || 0
+            );
+
         }
+      );
 
-      }
-    );
 
+      pengeluaranRows.forEach(
+        item => {
 
-  /* =========================
-     HITUNG TREND SALDO
-  ========================== */
+          const tanggal =
+            String(
+              item.tanggal || ""
+            );
 
-  const transactions = [];
+          const bulan =
+            tanggal.substring(0, 7);
 
+          if (!bulan) {
+            return;
+          }
 
-  kasRows.forEach(item => {
+          if (!monthly[bulan]) {
 
-    transactions.push({
-
-      tanggal:
-        String(
-          item.tanggal || ""
-        ),
-
-      jumlah:
-        Number(
-          item.jumlah || 0
-        )
-
-    });
-
-  });
-
-
-  pengeluaranRows.forEach(item => {
-
-    transactions.push({
-
-      tanggal:
-        String(
-          item.tanggal || ""
-        ),
-
-      jumlah:
-        -Number(
-          item.jumlah || 0
-        )
-
-    });
-
-  });
-
-
-  transactions.sort(
-    (a, b) =>
-      a.tanggal.localeCompare(
-        b.tanggal
-      )
-  );
-
-
-  let saldo = 0;
-
-  const balanceLabels = [];
-  const balanceValues = [];
-
-
-  transactions.forEach(item => {
-
-    saldo += item.jumlah;
-
-    balanceLabels.push(
-      formatTanggal(
-        item.tanggal
-      )
-    );
-
-    balanceValues.push(
-      saldo
-    );
-
-  });
-
-
-  /* =========================
-     DIAGRAM SALDO
-  ========================== */
-
-  const balanceCanvas =
-    document.getElementById(
-      "balanceChart"
-    );
-
-  if (!balanceCanvas) {
-    return;
-  }
-
-
-  if (balanceChart) {
-    balanceChart.destroy();
-  }
-
-
-  balanceChart =
-    new Chart(
-      balanceCanvas,
-      {
-        type: "line",
-
-        data: {
-
-          labels:
-            balanceLabels,
-
-          datasets: [
-
-            {
-              label: "Saldo Kas",
-
-              data:
-                balanceValues,
-
-              borderColor:
-                "#17479e",
-
-              backgroundColor:
-                "rgba(23, 71, 158, 0.10)",
-
-              fill: true,
-
-              tension: 0.3,
-
-              borderWidth: 3,
-
-              pointRadius: 3,
-
-              pointHoverRadius: 6
-            }
-
-          ]
-
-        },
-
-        options: {
-
-          responsive: true,
-
-          maintainAspectRatio: false,
-
-          interaction: {
-            mode: "index",
-            intersect: false
-          },
-
-          plugins: {
-
-            legend: {
-              display: false
-            },
-
-            tooltip: {
-
-              callbacks: {
-
-                label: function(context) {
-
-                  return (
-                    "Saldo: " +
-                    rupiah(
-                      context.raw
-                    )
-                  );
-
-                }
-
-              }
-
-            }
-
-          },
-
-          scales: {
-
-            y: {
-
-              beginAtZero: true,
-
-              ticks: {
-
-                callback: function(value) {
-
-                  return rupiah(
-                    value
-                  );
-
-                }
-
-              }
-
-            }
+            monthly[bulan] = {
+              pemasukan: 0,
+              pengeluaran: 0
+            };
 
           }
 
-        }
+          monthly[bulan].pengeluaran +=
+            Number(
+              item.jumlah || 0
+            );
 
-      }
-    );
-
-}
-
-  /* =========================
-   LOAD PUBLIC DATA
-========================== */
-
-async function loadPublicData(forceRefresh = false) {
-
-  const status =
-    document.getElementById(
-      "status"
-    );
-
-  const error =
-    document.getElementById(
-      "error"
-    );
-
-  const kasLoading =
-    document.getElementById(
-      "kasLoading"
-    );
-
-  const pengeluaranLoading =
-    document.getElementById(
-      "pengeluaranLoading"
-    );
-
-
-  error.style.display =
-    "none";
-
-
-  kasLoading.style.display =
-    "block";
-
-
-  pengeluaranLoading.style.display =
-    "block";
-
-
-  status.textContent =
-    "Memuat data...";
-
-
-  const url =
-    forceRefresh
-      ? "/api/public-data?refresh=1"
-      : "/api/public-data";
-
-
-  try {
-
-    const response =
-      await fetch(
-        url,
-        {
-          method: "GET",
-          cache: "no-store"
         }
       );
 
 
-    const data =
-      await response.json();
+      const months =
+        Object.keys(monthly)
+          .sort();
 
 
-    if (!response.ok) {
-
-      throw new Error(
-        data.error ||
-        "Gagal mengambil data."
-      );
-
-    }
-
-
-    renderSummary(
-      data.summary
-    );
-
-
-    renderKas(
-      data.kas || []
-    );
-
-
-    renderPengeluaran(
-      data.pengeluaran || []
-    );
-    renderCharts(
-    data.kas || [],
-    data.pengeluaran || []
-    );
-
-
-    kasLoading.style.display =
-      "none";
-
-
-    pengeluaranLoading.style.display =
-      "none";
-
-
-    status.textContent =
-      "Data berhasil diperbarui • " +
-      new Date()
-        .toLocaleString(
-          "id-ID"
+      const labels =
+        months.map(
+          formatBulan
         );
 
 
-  } catch (e) {
-
-    console.error(
-      "PUBLIC PAGE ERROR:",
-      e
-    );
-
-
-    error.textContent =
-      "Gagal memuat data transparansi. " +
-      "Silakan coba tombol Perbarui Data kembali.";
+      const pemasukan =
+        months.map(
+          month =>
+            monthly[month].pemasukan
+        );
 
 
-    error.style.display =
-      "block";
+      const pengeluaran =
+        months.map(
+          month =>
+            monthly[month].pengeluaran
+        );
 
 
-    status.textContent =
-      "Gagal memuat data";
+      /* ===================================================
+         DIAGRAM ARUS KAS
+      =================================================== */
+
+      const cashFlowCanvas =
+        document.getElementById(
+          "cashFlowChart"
+        );
+
+      if (!cashFlowCanvas) {
+        return;
+      }
 
 
-    kasLoading.style.display =
-      "none";
+      if (cashFlowChart) {
+        cashFlowChart.destroy();
+      }
 
 
-    pengeluaranLoading.style.display =
-      "none";
+      cashFlowChart =
+        new Chart(
+          cashFlowCanvas,
+          {
+            type: "bar",
 
-  }
+            data: {
 
-}
+              labels: labels,
+
+              datasets: [
+
+                {
+                  label: "Pemasukan",
+
+                  data: pemasukan,
+
+                  backgroundColor:
+                    "#22c55e",
+
+                  borderRadius: 6
+                },
+
+                {
+                  label: "Pengeluaran",
+
+                  data: pengeluaran,
+
+                  backgroundColor:
+                    "#ef4444",
+
+                  borderRadius: 6
+                }
+
+              ]
+
+            },
+
+            options: {
+
+              responsive: true,
+
+              maintainAspectRatio: false,
+
+              interaction: {
+                mode: "index",
+                intersect: false
+              },
+
+              plugins: {
+
+                legend: {
+                  position: "top",
+
+                  labels: {
+                    usePointStyle: true,
+
+                    padding: 16
+                  }
+                },
+
+                tooltip: {
+
+                  callbacks: {
+
+                    label:
+                      function(context) {
+
+                        return (
+                          context.dataset.label +
+                          ": " +
+                          rupiah(
+                            context.raw
+                          )
+                        );
+
+                      }
+
+                  }
+
+                }
+
+              },
+
+              scales: {
+
+                y: {
+
+                  beginAtZero: true,
+
+                  ticks: {
+
+                    callback:
+                      function(value) {
+
+                        return rupiah(
+                          value
+                        );
+
+                      }
+
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+        );
 
 
-    /* =========================
+      /* ===================================================
+         HITUNG TREND SALDO
+      =================================================== */
+
+      const transactions = [];
+
+
+      kasRows.forEach(
+        item => {
+
+          transactions.push({
+
+            tanggal:
+              String(
+                item.tanggal || ""
+              ),
+
+            jumlah:
+              Number(
+                item.jumlah || 0
+              )
+
+          });
+
+        }
+      );
+
+
+      pengeluaranRows.forEach(
+        item => {
+
+          transactions.push({
+
+            tanggal:
+              String(
+                item.tanggal || ""
+              ),
+
+            jumlah:
+              -Number(
+                item.jumlah || 0
+              )
+
+          });
+
+        }
+      );
+
+
+      transactions.sort(
+        (a, b) =>
+          a.tanggal.localeCompare(
+            b.tanggal
+          )
+      );
+
+
+      let saldo = 0;
+
+      const balanceLabels = [];
+
+      const balanceValues = [];
+
+
+      transactions.forEach(
+        item => {
+
+          saldo += item.jumlah;
+
+          balanceLabels.push(
+            formatTanggal(
+              item.tanggal
+            )
+          );
+
+          balanceValues.push(
+            saldo
+          );
+
+        }
+      );
+
+
+      /* ===================================================
+         DIAGRAM SALDO
+      =================================================== */
+
+      const balanceCanvas =
+        document.getElementById(
+          "balanceChart"
+        );
+
+      if (!balanceCanvas) {
+        return;
+      }
+
+
+      if (balanceChart) {
+        balanceChart.destroy();
+      }
+
+
+      balanceChart =
+        new Chart(
+          balanceCanvas,
+          {
+            type: "line",
+
+            data: {
+
+              labels:
+                balanceLabels,
+
+              datasets: [
+
+                {
+                  label: "Saldo Kas",
+
+                  data:
+                    balanceValues,
+
+                  borderColor:
+                    "#15803d",
+
+                  backgroundColor:
+                    "rgba(21, 128, 61, 0.10)",
+
+                  fill: true,
+
+                  tension: 0.3,
+
+                  borderWidth: 3,
+
+                  pointRadius: 3,
+
+                  pointHoverRadius: 6
+                }
+
+              ]
+
+            },
+
+            options: {
+
+              responsive: true,
+
+              maintainAspectRatio: false,
+
+              interaction: {
+                mode: "index",
+                intersect: false
+              },
+
+              plugins: {
+
+                legend: {
+                  display: false
+                },
+
+                tooltip: {
+
+                  callbacks: {
+
+                    label:
+                      function(context) {
+
+                        return (
+                          "Saldo: " +
+                          rupiah(
+                            context.raw
+                          )
+                        );
+
+                      }
+
+                  }
+
+                }
+
+              },
+
+              scales: {
+
+                y: {
+
+                  beginAtZero: true,
+
+                  ticks: {
+
+                    callback:
+                      function(value) {
+
+                        return rupiah(
+                          value
+                        );
+
+                      }
+
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+        );
+
+    }
+
+
+    /* =====================================================
+       LOAD PUBLIC DATA
+    ===================================================== */
+
+    async function loadPublicData(
+      forceRefresh = false
+    ) {
+
+      const status =
+        document.getElementById(
+          "status"
+        );
+
+      const error =
+        document.getElementById(
+          "error"
+        );
+
+      const kasLoading =
+        document.getElementById(
+          "kasLoading"
+        );
+
+      const pengeluaranLoading =
+        document.getElementById(
+          "pengeluaranLoading"
+        );
+
+
+      error.style.display =
+        "none";
+
+
+      kasLoading.style.display =
+        "block";
+
+
+      pengeluaranLoading.style.display =
+        "block";
+
+
+      status.textContent =
+        "Memuat data...";
+
+
+      const url =
+        forceRefresh
+          ? "/api/public-data?refresh=1"
+          : "/api/public-data";
+
+
+      try {
+
+        const response =
+          await fetch(
+            url,
+            {
+              method: "GET",
+              cache: "no-store"
+            }
+          );
+
+
+        const data =
+          await response.json();
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            data.error ||
+            "Gagal mengambil data."
+          );
+
+        }
+
+
+        renderSummary(
+          data.summary
+        );
+
+
+        renderKas(
+          data.kas || []
+        );
+
+
+        renderPengeluaran(
+          data.pengeluaran || []
+        );
+
+
+        renderCharts(
+          data.kas || [],
+          data.pengeluaran || []
+        );
+
+
+        kasLoading.style.display =
+          "none";
+
+
+        pengeluaranLoading.style.display =
+          "none";
+
+
+        status.textContent =
+          "Data berhasil diperbarui • " +
+          new Date()
+            .toLocaleString(
+              "id-ID"
+            );
+
+
+      } catch (e) {
+
+        console.error(
+          "PUBLIC PAGE ERROR:",
+          e
+        );
+
+
+        error.textContent =
+          "Gagal memuat data transparansi. " +
+          "Silakan coba tombol Perbarui Data kembali.";
+
+
+        error.style.display =
+          "block";
+
+
+        status.textContent =
+          "Gagal memuat data";
+
+
+        kasLoading.style.display =
+          "none";
+
+
+        pengeluaranLoading.style.display =
+          "none";
+
+      }
+
+    }
+
+
+    /* =====================================================
        RENDER SUMMARY
-    ========================== */
+    ===================================================== */
 
     function renderSummary(
       summary
@@ -1792,9 +1840,9 @@ async function loadPublicData(forceRefresh = false) {
     }
 
 
-    /* =========================
+    /* =====================================================
        RENDER KAS
-    ========================== */
+    ===================================================== */
 
     function renderKas(
       rows
@@ -1876,9 +1924,9 @@ async function loadPublicData(forceRefresh = false) {
     }
 
 
-    /* =========================
+    /* =====================================================
        RENDER PENGELUARAN
-    ========================== */
+    ===================================================== */
 
     function renderPengeluaran(
       rows
@@ -1966,25 +2014,28 @@ async function loadPublicData(forceRefresh = false) {
     }
 
 
-    /* =========================
+    /* =====================================================
        MULAI
-    ========================== */
+    ===================================================== */
 
     loadPublicData();
 
-    /* =========================
-   AUTO REFRESH DATA
-   Setiap 30 detik
-========================== */
 
-setInterval(() => {
+    /* =====================================================
+       AUTO REFRESH DATA
+       Setiap 30 detik
+    ===================================================== */
 
-  loadPublicData(true);
+    setInterval(
+      () => {
 
-}, 30000);
+        loadPublicData(true);
+
+      },
+      30000
+    );
 
   </script>
-
 
 </body>
 
