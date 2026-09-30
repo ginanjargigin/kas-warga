@@ -33,6 +33,7 @@
   --primary-text: #173b76;
   --focus: #4d7fca;
   --focus-ring: rgba(23, 71, 158, 0.10);
+   --focus-bg: #f0f6ff;
 
   --header: #17479e;
   --header-shadow: rgba(23, 71, 158, 0.14);
@@ -86,6 +87,7 @@ body[data-theme="dark"] {
   --primary-text: #bfdbfe;
   --focus: #60a5fa;
   --focus-ring: rgba(37, 99, 235, 0.22);
+   --focus-bg: #172554;
 
   --header: #0b1220;
   --header-shadow: rgba(0, 0, 0, 0.30);
@@ -139,6 +141,7 @@ body[data-theme="green"] {
   --primary-text: #166534;
   --focus: #22a06b;
   --focus-ring: rgba(21, 128, 61, 0.13);
+   --focus-bg: #f0fdf4;
 
   --header: #15803d;
   --header-shadow: rgba(21, 128, 61, 0.16);
@@ -647,10 +650,12 @@ input:focus,
 select:focus {
   border-color: var(--focus);
 
-  background: var(--surface);
+  background: var(--focus-bg);
 
   box-shadow:
     0 0 0 3px var(--focus-ring);
+
+  outline: none;
 }
 
 input::placeholder {
