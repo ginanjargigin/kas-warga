@@ -362,7 +362,7 @@ async function retryLoadData() {
 
 document
   .querySelectorAll(
-    "nav button"
+     ".nav-menu button"
   )
   .forEach(
     button => {
@@ -414,6 +414,68 @@ document
 
     }
   );
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+const mobileNavToggle =
+  document.querySelector(
+    ".mobile-nav-toggle"
+  );
+
+const navMenu =
+  document.getElementById(
+    "adminNavMenu"
+  );
+
+
+if (
+  mobileNavToggle &&
+  navMenu
+) {
+
+  mobileNavToggle.addEventListener(
+    "click",
+    () => {
+
+      const isOpen =
+        navMenu.classList.toggle(
+          "open"
+        );
+
+      mobileNavToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+    }
+  );
+
+
+  navMenu
+    .querySelectorAll("button")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          navMenu.classList.remove(
+            "open"
+          );
+
+          mobileNavToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+      );
+
+    });
+
+}
 
 /* =========================================================
    TEMA TAMPILAN
