@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
+  name="viewport"
+  content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
   <title>Kas Warga</title>
@@ -108,55 +108,78 @@
   <main class="wrap">
 
     <!-- NAVIGASI -->
-  <nav>
+ <nav class="admin-nav">
 
   <button
-    class="btn2 active"
-    data-tab="rekap"
+    type="button"
+    class="mobile-nav-toggle"
+    aria-expanded="false"
+    aria-controls="adminNavMenu"
   >
-    <i data-lucide="layout-dashboard"></i>
-    DASHBOARD
+    <i data-lucide="menu"></i>
+    <span>MENU</span>
   </button>
 
-  <button
-    class="btn2"
-    data-tab="warga"
+  <div
+    id="adminNavMenu"
+    class="nav-menu"
   >
-    <i data-lucide="users"></i>
-    DATA WARGA
-  </button>
 
-  <button
-    class="btn2"
-    data-tab="kas"
-  >
-    <i data-lucide="wallet-cards"></i>
-    PEMBAYARAN KAS
-  </button>
+    <button
+      type="button"
+      class="btn2 active"
+      data-tab="rekap"
+    >
+      <i data-lucide="layout-dashboard"></i>
+      DASHBOARD
+    </button>
 
-  <button
-    class="btn2"
-    data-tab="pengeluaran"
-  >
-    <i data-lucide="receipt-text"></i>
-    PENGELUARAN
-  </button>
+    <button
+      type="button"
+      class="btn2"
+      data-tab="warga"
+    >
+      <i data-lucide="users"></i>
+      DATA WARGA
+    </button>
 
-  <button
-    class="btn2"
-    data-tab="search"
-  >
-    <i data-lucide="search"></i>
-    CARI DATA
-  </button>
+    <button
+      type="button"
+      class="btn2"
+      data-tab="kas"
+    >
+      <i data-lucide="wallet-cards"></i>
+      PEMBAYARAN KAS
+    </button>
 
-  <button
-    class="btn2"
-    data-tab="tema"
-  >
-    <i data-lucide="palette"></i>
-    TEMA
-  </button>
+    <button
+      type="button"
+      class="btn2"
+      data-tab="pengeluaran"
+    >
+      <i data-lucide="receipt-text"></i>
+      PENGELUARAN
+    </button>
+
+    <button
+      type="button"
+      class="btn2"
+      data-tab="search"
+    >
+      <i data-lucide="search"></i>
+      CARI DATA
+    </button>
+
+    <button
+      type="button"
+      class="btn2"
+      data-tab="tema"
+    >
+      <i data-lucide="palette"></i>
+      TEMA
+    </button>
+
+  </div>
 
 </nav>
 
