@@ -525,8 +525,9 @@ pJumlah.addEventListener(
 
 setupLastInputBy();
 
-
 setupPeriodeKas();
+
+setupTheme();
 
 
 /*
