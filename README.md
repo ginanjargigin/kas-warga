@@ -1,6 +1,6 @@
 # KAS GANG WARGA — JSONBin + Vercel
 
-Aplikasi web untuk pengelolaan kas warga RT 027.
+Aplikasi web untuk pengelolaan kas warga 
 
 ## URL Aplikasi
 
