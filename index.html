@@ -15,59 +15,183 @@
 
 <body>
 
+
 <!-- =========================
-     LOGIN
+     LOGIN KAS WARGA
 ========================= -->
 
-<div id="loginView" class="wrap">
+<div id="loginView" class="wrap login-page">
 
-  <div class="login">
+  <div class="login-shell">
 
-    <h2>Kas Warga</h2>
+    <!-- PANEL INFORMASI -->
+    <section class="login-info">
 
-    <div class="muted">
-      Rt __ • Login Admin
-    </div>
+      <div class="login-illustration">
+        <div class="login-illustration-content">
+          <div class="login-house-icon">
+            <i data-lucide="house"></i>
+          </div>
 
-    
-    <div class="login-welcome">
-      <strong>Selamat datang di Kas Warga!</strong>
-      <p>Untuk pendaftaran akun admin, silakan hubungi admin.</p>
-      <p>Pengunjung dapat melihat laporan pemasukan, pengeluaran, dan saldo kas warga melalui menu di bawah ini.</p>
-    </div>
+          <h2>Kas Warga</h2>
+          <span>RT __ • Login Admin</span>
 
+          <div class="login-community">
+            <i data-lucide="house"></i>
+            <i data-lucide="trees"></i>
+            <i data-lucide="users"></i>
+          </div>
 
-    <label>Username/Email</label>
+          <p>Transparan • Terpercaya • Untuk Kita Bersama</p>
+        </div>
+      </div>
 
-    <input
-      id="email"
-      type="email"
-    >
+      <div class="login-info-card">
+        <div class="login-info-icon green">
+          <i data-lucide="file-text"></i>
+        </div>
 
-    <label>Password</label>
+        <div>
+          <strong>Laporan Terbuka</strong>
+          <p>
+            Pengunjung dapat melihat laporan pemasukan,
+            pengeluaran, dan saldo kas warga tanpa login admin.
+          </p>
+        </div>
+      </div>
 
-    <input
-      id="password"
-      type="password"
-      onkeydown="if (event.key === 'Enter') login()"
-    >
+      <div class="login-info-card">
+        <div class="login-info-icon blue">
+          <i data-lucide="users"></i>
+        </div>
 
-    <button
-      class="btn"
-      style="width: 100%"
-      onclick="login()"
-    >
-      Masuk
-    </button>
+        <div>
+          <strong>Akun Admin</strong>
+          <p>
+            Untuk pendaftaran akun admin, silakan hubungi
+            admin atau pengurus RT.
+          </p>
+        </div>
+      </div>
 
-    <a
-      href="/public.html"
-      class="public-link"
-    >
-      Lihat Transparansi Kas Warga
-    </a>
+      <div class="login-info-card">
+        <div class="login-info-icon orange">
+          <i data-lucide="shield-check"></i>
+        </div>
 
-    <p id="loginMsg"></p>
+        <div>
+          <strong>Aman & Transparan</strong>
+          <p>
+            Informasi keuangan warga disajikan agar
+            pemasukan dan pengeluaran mudah dipantau.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PANEL LOGIN -->
+    <section class="login-form-panel">
+
+      <div class="login-heading">
+        <h1>Selamat Datang di</h1>
+        <h2>Kas Warga!</h2>
+
+        <p>
+          Sistem informasi keuangan warga untuk mendukung
+          transparansi dan kebersamaan di lingkungan RT __.
+        </p>
+      </div>
+
+      <div class="login-divider"></div>
+
+      <div class="login-field">
+
+        <label for="email">
+          <i data-lucide="user-round"></i>
+          Username/Email
+        </label>
+
+        <input
+          id="email"
+          type="text"
+          autocomplete="username"
+          placeholder="Masukkan username atau email"
+        >
+
+      </div>
+
+      <div class="login-field">
+
+        <label for="password">
+          <i data-lucide="lock-keyhole"></i>
+          Password
+        </label>
+
+        <div class="password-wrapper">
+
+          <input
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Masukkan password"
+            onkeydown="if (event.key === 'Enter') login()"
+          >
+
+          <button
+            type="button"
+            class="password-toggle"
+            aria-label="Tampilkan password"
+            onclick="
+              const field = document.getElementById('password');
+              const visible = field.type === 'password';
+              field.type = visible ? 'text' : 'password';
+              this.innerHTML = visible
+                ? '<i data-lucide=&quot;eye-off&quot;></i>'
+                : '<i data-lucide=&quot;eye&quot;></i>';
+              this.setAttribute(
+                'aria-label',
+                visible ? 'Sembunyikan password' : 'Tampilkan password'
+              );
+              lucide.createIcons();
+            "
+          >
+            <i data-lucide="eye"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+      <button
+        type="button"
+        class="btn login-submit"
+        onclick="login()"
+      >
+        <i data-lucide="log-in"></i>
+        Masuk
+      </button>
+
+      <p id="loginMsg" role="alert"></p>
+
+      <div class="login-or">
+        <span></span>
+        <small>atau</small>
+        <span></span>
+      </div>
+
+      <a href="/public.html" class="login-public-link">
+        <i data-lucide="chart-no-axes-column-increasing"></i>
+        <span>Lihat Transparansi Kas Warga</span>
+        <i data-lucide="arrow-right"></i>
+      </a>
+
+      <p class="login-public-note">
+        Laporan pemasukan, pengeluaran, dan saldo kas warga
+        dapat diakses oleh semua pengunjung.
+      </p>
+
+    </section>
 
   </div>
 
