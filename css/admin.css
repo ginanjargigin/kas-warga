@@ -506,6 +506,28 @@ button.danger:active {
 }
 
 
+.login-welcome {
+  margin: 16px 0 20px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-soft);
+}
+
+.login-welcome strong {
+  display: block;
+  color: var(--primary-text);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.login-welcome p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 /* =========================================================
    9. CARD
    ========================================================= */
