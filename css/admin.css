@@ -1437,6 +1437,13 @@ tbody tr:last-child td {
 
 #loginView.login-page {
   width: min(1000px, calc(100% - 32px));
+  min-height: calc(100vh - 64px);
+  min-height: calc(100svh - 64px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   margin: 32px auto;
 }
 
@@ -1891,16 +1898,25 @@ tbody tr:last-child td {
   text-align: center;
 }
 
-/* RESPONSIVE TABLET */
+
+/* RESPONSIVE LOGIN: TABLET & MOBILE */
 
 @media (max-width: 850px) {
   #loginView.login-page {
     width: min(600px, calc(100% - 24px));
+    min-height: auto;
+    display: block;
     margin: 20px auto;
   }
 
   .login-shell {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .login-info,
+  .login-form-panel {
+    width: 100%;
+    min-width: 0;
   }
 
   .login-info {
@@ -1914,14 +1930,19 @@ tbody tr:last-child td {
   .login-form-panel {
     padding: 30px 24px;
   }
+
+  .login-field input {
+    min-height: 48px;
+    font-size: 16px;
+  }
 }
 
-/* RESPONSIVE HP */
+/* HP ANDROID & IPHONE */
 
 @media (max-width: 480px) {
   #loginView.login-page {
     width: calc(100% - 20px);
-    margin: 12px auto;
+    margin: 12px auto 20px;
   }
 
   .login-shell {
@@ -1929,47 +1950,178 @@ tbody tr:last-child td {
   }
 
   .login-info {
-    padding: 14px;
+    padding: 12px;
   }
 
   .login-illustration {
-    min-height: 205px;
-    padding: 18px 10px;
+    min-height: 175px;
+    margin-bottom: 12px;
+    padding: 16px 10px;
+    border-radius: 14px;
+  }
+
+  .login-house-icon {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 7px;
+    border-radius: 16px;
+  }
+
+  .login-house-icon svg {
+    width: 32px;
+    height: 32px;
   }
 
   .login-illustration h2 {
-    font-size: 25px;
+    font-size: 23px;
+  }
+
+  .login-community {
+    gap: 16px;
+    margin: 14px 0 8px;
+  }
+
+  .login-community svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .login-community svg:nth-child(2) {
+    width: 30px;
+    height: 30px;
   }
 
   .login-info-card {
-    padding: 12px;
     gap: 10px;
+    padding: 11px;
+    margin-top: 9px;
   }
 
   .login-info-icon {
-    flex-basis: 38px;
-    width: 38px;
-    height: 38px;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
   }
 
   .login-info-icon svg {
-    width: 19px;
-    height: 19px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .login-info-card strong {
+    font-size: 13px;
+  }
+
+  .login-info-card p {
+    font-size: 12px;
+    line-height: 1.55;
   }
 
   .login-form-panel {
-    padding: 26px 18px;
+    padding: 24px 16px;
   }
 
   .login-heading h1 {
-    font-size: 21px;
+    font-size: 20px;
   }
 
   .login-heading h2 {
-    font-size: 31px;
+    font-size: 30px;
   }
 
   .login-heading p {
+    margin-top: 10px;
     font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .login-divider {
+    margin: 19px 0;
+  }
+
+  .login-field {
+    margin-bottom: 16px;
+  }
+
+  .login-field label {
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .login-field input {
+    min-height: 48px;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .password-wrapper input {
+    padding-right: 46px;
+  }
+
+  .login-submit,
+  .login-public-link {
+    min-height: 49px;
+  }
+
+  .login-submit {
+    font-size: 14px;
+  }
+
+  .login-or {
+    margin: 19px 0 15px;
+  }
+
+  .login-public-link {
+    gap: 7px;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .login-public-link svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .login-public-note {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+}
+
+/* HP KECIL */
+
+@media (max-width: 360px) {
+  #loginView.login-page {
+    width: calc(100% - 16px);
+  }
+
+  .login-form-panel {
+    padding: 22px 12px;
+  }
+
+  .login-info {
+    padding: 9px;
+  }
+
+  .login-heading h1 {
+    font-size: 18px;
+  }
+
+  .login-heading h2 {
+    font-size: 27px;
+  }
+
+  .login-public-link {
+    gap: 5px;
+    font-size: 11px;
+  }
+}
+
+/* HP LANDSCAPE */
+
+@media (max-width: 850px) and (orientation: landscape) {
+  #loginView.login-page {
+    min-height: auto;
+    margin: 12px auto 20px;
   }
 }
